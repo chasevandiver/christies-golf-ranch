@@ -1,0 +1,58 @@
+---
+import { site } from '../config/site';
+
+/**
+ * "First time here?" walkthrough (ticket 3.2) — reinforces the low-pressure
+ * positioning that is the competitive moat. Three plain steps so a brand-new
+ * golfer knows exactly what to do when they pull in.
+ */
+---
+<section class="section on-dark firsttime" id="first-time">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow">First Time Here?</span>
+      <h2>It's easier than you think</h2>
+      <p class="intro">No membership, no tee time, no pressure. Here's all there is to it.</p>
+    </div>
+    <ol class="steps reveal">
+      <li>
+        <span class="n">1</span>
+        <h3>Drive up</h3>
+        <p>Head to {site.address.street} in {site.address.locality} and park. The range is open every day, 8am till dark — no reservation needed.</p>
+      </li>
+      <li>
+        <span class="n">2</span>
+        <h3>Grab a bucket</h3>
+        <p>Stop in the pro shop for a small bucket ($17) or large ($25). New to the game? Just ask — everyone's welcome here.</p>
+      </li>
+      <li>
+        <span class="n">3</span>
+        <h3>Pick a station &amp; swing</h3>
+        <p>Take any open grass station and hit away on real Texas turf. Want pointers? Ask about a lesson with Jeff.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<style>
+  .steps {
+    list-style: none; padding: 0; margin: 2.8rem 0 0;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem;
+    counter-reset: none;
+  }
+  .steps li {
+    background: var(--leather-soft);
+    border: 1px solid var(--line-d);
+    border-radius: var(--r); padding: 1.8rem;
+  }
+  .steps .n {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 40px; height: 40px; border-radius: 50%;
+    background: var(--brass); color: var(--leather-deep);
+    font-family: 'Bitter', Georgia, serif; font-weight: 800; font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+  .steps h3 { font-size: 1.2rem; font-weight: 700; color: var(--cream); margin-bottom: 0.4rem; }
+  .steps p { margin: 0; color: var(--cream-soft); font-size: 0.96rem; }
+  @media (max-width: 820px) { .steps { grid-template-columns: 1fr; } }
+</style>

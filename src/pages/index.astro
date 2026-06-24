@@ -2,6 +2,10 @@
 import Layout from '../layouts/Layout.astro';
 import Photo from '../components/Photo.astro';
 import Seal from '../components/Seal.astro';
+import OpenStatus from '../components/OpenStatus.astro';
+import PlayDay from '../components/PlayDay.astro';
+import FirstTime from '../components/FirstTime.astro';
+import Faq from '../components/Faq.astro';
 import { site, addressLine } from '../config/site';
 
 const title = "Christie's Golf Ranch — The Premier All-Grass Driving Range in North Texas";
@@ -34,6 +38,8 @@ const description =
           <a class="btn btn-brass btn-lg" href="/pricing">View Pricing</a>
           <a class="btn btn-outline btn-lg" href="/visit">Hours &amp; Directions</a>
         </div>
+        <!-- Live "Open now · closing around dusk" status (ticket 4.1) -->
+        <div style="margin-top:1.6rem"><OpenStatus variant="badge" /></div>
       </div>
       <!-- BRANDING-IRON SEAL: the ranch signature -->
       <div class="hero-seal">
@@ -137,17 +143,11 @@ const description =
     </div>
   </section>
 
-  <!-- PLAY DAY -->
-  <section class="section on-dark playday">
-    <div class="wrap">
-      <div class="copy reveal">
-        <span class="eyebrow">Last Friday, every month</span>
-        <h2>Monthly Play Day on the par-3</h2>
-        <p class="intro">Unlimited golf on the nine-hole, par-3 course — real greens, real slopes, no tee times. Just ride up and play. The course opens for events like this; the range is open daily.</p>
-      </div>
-      <div class="price reveal"><div class="big">$25</div><div class="sub">Unlimited play · per golfer</div></div>
-    </div>
-  </section>
+  <!-- PLAY DAY — live countdown + add-to-calendar (ticket 4.2) -->
+  <PlayDay />
+
+  <!-- FIRST TIME HERE? (ticket 3.2) -->
+  <FirstTime />
 
   <!-- MISSION -->
   <section class="section mission">
@@ -175,6 +175,9 @@ const description =
       <p class="editnote reveal" style="color:var(--cream-soft);border-color:var(--brass)">Your current site lists these names but the quote text came through garbled. Drop in the real wording, or pull your strongest recent Google reviews. Genuine reviews only.</p>
     </div>
   </section>
+
+  <!-- FAQ — with FAQPage schema (ticket 3.1) -->
+  <Faq />
 
   <!-- VISIT -->
   <section class="section on-dark" id="visit" style="background:var(--leather-soft)">

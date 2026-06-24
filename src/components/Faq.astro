@@ -1,0 +1,88 @@
+---
+import { site, addressLine } from '../config/site';
+
+/**
+ * FAQ section + FAQPage structured data (ticket 3.1). Answers the real
+ * first-timer friction questions to remove the "I'll just call to ask" barrier
+ * and compete for featured snippets.
+ *
+ * Every answer below is drawn from facts already published on the site. Two
+ * commonly-asked questions are intentionally NOT included until Chase confirms
+ * the real policy (see note in the page) — we don't invent business facts:
+ *   • "Do you rent loaner clubs?"   • "Do you take cash, or card only?"
+ */
+const faqs = [
+  {
+    q: 'Do I need a membership to hit balls?',
+    a: `No. Walk up any day and grab a bucket — $17 for a small (75 balls) or $25 for a large (150 balls). Memberships ($90–$130/month) are just for regulars who want unlimited range balls.`,
+  },
+  {
+    q: 'Can I just walk up, or do I need a reservation?',
+    a: `Just walk up. The all-grass driving range is open every day from 8am till dark — no tee times, no reservations.`,
+  },
+  {
+    q: 'Is the 9-hole par-3 course open today?',
+    a: `The driving range is open daily. The par-3 course opens for events and our monthly Play Day (the last Friday of each month — unlimited play for $25). Call ${site.phone} to confirm course availability.`,
+  },
+  {
+    q: 'Are kids and families welcome?',
+    a: `Absolutely — this is a low-pressure, beginner-friendly place. We also run a summer junior camp for ages 8–12, and lessons are great for the whole family.`,
+  },
+  {
+    q: 'Do you offer golf lessons?',
+    a: `Yes. Private instruction with Jeff Christie is $95 for a single hour, with 3, 5, and 7-lesson packages available for individuals, families, and teams.`,
+  },
+  {
+    q: 'Where are you located?',
+    a: `${addressLine} — in the heart of Pilot Point horse country, just off US Highway 377.`,
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+---
+<section class="section" id="faq">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow">Good to Know</span>
+      <h2>Frequently asked questions</h2>
+    </div>
+    <div class="faqlist reveal">
+      {faqs.map((f) => (
+        <details class="faq">
+          <summary>{f.q}<span class="chev" aria-hidden="true"></span></summary>
+          <p>{f.a}</p>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+<style>
+  .faqlist { margin-top: 2.4rem; border-top: 1px solid var(--line-l); max-width: 820px; }
+  .faq { border-bottom: 1px solid var(--line-l); }
+  .faq summary {
+    list-style: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    padding: 1.25rem 0;
+    font-family: 'Bitter', Georgia, serif; font-weight: 700; font-size: 1.12rem;
+    color: var(--leather);
+  }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq .chev {
+    flex: none; width: 12px; height: 12px;
+    border-right: 2px solid var(--brass-ink); border-bottom: 2px solid var(--brass-ink);
+    transform: rotate(45deg); transition: transform 0.2s; margin-right: 4px;
+  }
+  .faq[open] .chev { transform: rotate(-135deg); }
+  .faq p { margin: 0 0 1.3rem; color: var(--ink-soft); font-size: 1.02rem; max-width: 68ch; }
+</style>

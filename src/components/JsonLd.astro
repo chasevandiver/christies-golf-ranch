@@ -5,16 +5,21 @@ import { site } from '../config/site';
  * LocalBusiness (GolfCourse) structured data, generated from the shared NAP
  * config and rendered on EVERY page via Layout. One source of truth — keeps
  * the schema NAP identical to what's shown on the page.
+ *
+ * Validate after changes: https://search.google.com/test/rich-results
+ * TODO (Phase 1.3): add `image` once real photography is wired in.
  */
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'GolfCourse',
+  '@id': site.url + '/#business',
   name: site.name,
   description:
-    'The premier all-grass golf ranch in North Texas — a driving range and 9-hole par-3 golf course.',
+    'The premier all-grass golf ranch in North Texas — a 55-station driving range and 9-hole par-3 golf course in Pilot Point.',
   url: site.url + '/',
   telephone: site.phoneE164,
   email: site.email,
+  priceRange: site.priceRange,
   address: {
     '@type': 'PostalAddress',
     streetAddress: site.address.street,
@@ -28,8 +33,20 @@ const jsonLd = {
     latitude: site.geo.latitude,
     longitude: site.geo.longitude,
   },
+  hasMap: `https://www.google.com/maps/search/?api=1&query=${site.geo.latitude},${site.geo.longitude}`,
+  // Range is open daily; closing tracks sunset ("dark"). 20:00 is a
+  // schema-friendly approximation — the on-page badge shows real sunset.
   openingHours: site.hours.schema,
-  priceRange: site.priceRange,
+  openingHoursSpecification: {
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+    opens: site.hours.opens,
+    closes: site.hours.closesApprox,
+  },
+  areaServed: site.areaServed.map((name) => ({
+    '@type': 'City',
+    name,
+  })),
   sameAs: [site.social.facebook, site.social.instagram, site.social.yelp],
 };
 ---

@@ -68,12 +68,39 @@ const description = "Summer junior golf camp at Christie's Golf Ranch in Pilot P
           </div>
           <div class="pcard hi" style="justify-content:center;text-align:center;align-items:center">
             <h4>Register for 2026</h4>
-            <p class="desc">Sign up through our registration form, or call with any questions.</p>
-            <div class="cta"><a class="btn btn-brass btn-lg" href={site.links.juniorCampForm} target="_blank" rel="noopener">Open the Form</a></div>
-            <div style="margin-top:.8rem"><a class="btn btn-dark" href={site.phoneHref}>Call {site.phone}</a></div>
+            <p class="desc">Fill out the form below — or call with any questions.</p>
+            <div class="cta"><a class="btn btn-dark" href={site.phoneHref}>Call {site.phone}</a></div>
           </div>
         </div>
+      </div>
+
+      <!-- Registration form embedded inline (ticket 4.5) so parents register
+           without leaving the site. Falls back to a direct link if the iframe
+           is blocked. -->
+      <div class="reveal" style="margin-top:2.4rem">
+        <div class="band-head"><h3>Camp registration</h3><span class="note">Secure Google Form</span></div>
+        <div class="form-embed">
+          <iframe
+            src={`${site.links.juniorCampForm}/viewform?embedded=true`}
+            title="Junior camp registration form"
+            loading="lazy"
+            width="100%"
+            height="900"
+          >Loading…</iframe>
+        </div>
+        <p class="editnote">Trouble with the form above? <a href={site.links.juniorCampForm} target="_blank" rel="noopener" style="color:var(--leather);font-weight:800">Open it in a new tab</a> or call <a href={site.phoneHref} style="color:var(--leather);font-weight:800">{site.phone}</a>.</p>
       </div>
     </div>
   </section>
 </Layout>
+
+<style>
+  .form-embed {
+    border: 1px solid var(--line-l);
+    border-radius: var(--r);
+    overflow: hidden;
+    background: var(--card);
+    box-shadow: var(--shadow);
+  }
+  .form-embed iframe { display: block; border: 0; width: 100%; }
+</style>

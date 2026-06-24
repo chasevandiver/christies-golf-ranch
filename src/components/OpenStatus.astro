@@ -1,0 +1,150 @@
+---
+import { site } from '../config/site';
+
+/**
+ * Live "Open now · closing around dusk" badge — a signature touch (ticket 4.1).
+ *
+ * The ranch is open "8am till dark", so we compute today's actual sunset for the
+ * ranch's coordinates (client-side, no API key) and show a live status that
+ * recomputes on every load — no redeploy needed as the seasons change.
+ *
+ * `variant`: "badge" (pill, for the hero) or "inline" (compact, for the header).
+ */
+interface Props {
+  variant?: 'badge' | 'inline';
+  class?: string;
+}
+const { variant = 'badge', class: className } = Astro.props;
+const opensHour = Number(site.hours.opens.split(':')[0]); // 8
+---
+<span
+  class:list={['openstatus', variant, className]}
+  data-lat={site.geo.latitude}
+  data-lng={site.geo.longitude}
+  data-tz={site.timezone}
+  data-opens={opensHour}
+  aria-live="polite"
+>
+  <span class="dot" aria-hidden="true"></span>
+  <span class="txt">Open daily · 8am till dark</span>
+</span>
+
+<script>
+  // Sunrise/sunset almanac algorithm (NOAA-derived) — accurate to ~1 min.
+  function sunsetUTCHours(year: number, month: number, day: number, lat: number, lng: number): number | null {
+    const ZENITH = 90.833; // official sunrise/sunset
+    const D2R = Math.PI / 180, R2D = 180 / Math.PI;
+    const mod = (a: number, b: number) => ((a % b) + b) % b;
+    const N1 = Math.floor((275 * month) / 9);
+    const N2 = Math.floor((month + 9) / 12);
+    const N3 = 1 + Math.floor((year - 4 * Math.floor(year / 4) + 2) / 3);
+    const N = N1 - N2 * N3 + day - 30; // day of year
+
+    const lngHour = lng / 15;
+    const t = N + (18 - lngHour) / 24; // sunset approximation
+    const M = 0.9856 * t - 3.289; // mean anomaly
+    let L = M + 1.916 * Math.sin(M * D2R) + 0.02 * Math.sin(2 * M * D2R) + 282.634;
+    L = mod(L, 360); // true longitude
+    let RA = R2D * Math.atan(0.91764 * Math.tan(L * D2R));
+    RA = mod(RA, 360);
+    RA += Math.floor(L / 90) * 90 - Math.floor(RA / 90) * 90; // same quadrant as L
+    RA /= 15; // into hours
+    const sinDec = 0.39782 * Math.sin(L * D2R);
+    const cosDec = Math.cos(Math.asin(sinDec));
+    const cosH = (Math.cos(ZENITH * D2R) - sinDec * Math.sin(lat * D2R)) / (cosDec * Math.cos(lat * D2R));
+    if (cosH > 1 || cosH < -1) return null; // sun never sets/rises
+    const H = (R2D * Math.acos(cosH)) / 15; // sunset hour angle (acos for setting)
+    const T = H + RA - 0.06571 * t - 6.622;
+    return mod(T - lngHour, 24); // UTC hours
+  }
+
+  // Offset (ms) of an IANA timezone at a given instant — DST-aware.
+  function tzOffsetMs(tz: string, date: Date): number {
+    const u = new Date(date.toLocaleString('en-US', { timeZone: 'UTC' }));
+    const l = new Date(date.toLocaleString('en-US', { timeZone: tz }));
+    return l.getTime() - u.getTime();
+  }
+
+  function ymdInTz(tz: string, date: Date) {
+    const parts = new Intl.DateTimeFormat('en-CA', {
+      timeZone: tz, year: 'numeric', month: '2-digit', day: '2-digit',
+    }).formatToParts(date);
+    const get = (t: string) => Number(parts.find((p) => p.type === t)!.value);
+    return { y: get('year'), m: get('month'), d: get('day') };
+  }
+
+  function render(el: HTMLElement) {
+    const lat = Number(el.dataset.lat), lng = Number(el.dataset.lng);
+    const tz = el.dataset.tz || 'America/Chicago';
+    const opensHour = Number(el.dataset.opens || '8');
+    const txt = el.querySelector('.txt') as HTMLElement;
+    const now = new Date();
+
+    try {
+      const { y, m, d } = ymdInTz(tz, now);
+      const ut = sunsetUTCHours(y, m, d, lat, lng);
+      if (ut == null) return; // keep generic fallback text
+
+      const sunset = new Date(Date.UTC(y, m - 1, d, 0, 0, 0) + ut * 3600_000);
+      // 08:00 in the ranch's timezone, as an absolute instant
+      const opensUTCguess = Date.UTC(y, m - 1, d, opensHour, 0, 0);
+      const opens = new Date(opensUTCguess - tzOffsetMs(tz, now));
+
+      const fmt = (date: Date) =>
+        date.toLocaleTimeString('en-US', { timeZone: tz, hour: 'numeric', minute: '2-digit' });
+
+      let open = false, message = '';
+      if (now < opens) {
+        message = `Closed · opens 8 AM`;
+      } else if (now <= sunset) {
+        open = true;
+        message = `Open now · closing around ${fmt(sunset)}`;
+      } else {
+        message = `Closed · opens 8 AM tomorrow`;
+      }
+      el.classList.toggle('is-open', open);
+      el.classList.toggle('is-closed', !open);
+      txt.textContent = message;
+    } catch {
+      /* leave the generic "Open daily" fallback in place */
+    }
+  }
+
+  document.querySelectorAll<HTMLElement>('.openstatus').forEach(render);
+</script>
+
+<style>
+  .openstatus {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-family: 'Mulish', system-ui, sans-serif;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+  }
+  .openstatus .dot {
+    width: 9px; height: 9px; border-radius: 50%;
+    background: #BEAF92; flex: none;
+  }
+  .openstatus.is-open .dot { background: #6FBF73; box-shadow: 0 0 0 4px rgba(111,191,115,0.22); }
+  .openstatus.is-closed .dot { background: #C98A4B; }
+
+  /* badge: pill on the dark hero */
+  .openstatus.badge {
+    font-size: 0.82rem;
+    color: #F1E8D4;
+    background: rgba(39,26,16,0.55);
+    border: 1px solid rgba(176,136,63,0.4);
+    padding: 0.5rem 0.95rem;
+    border-radius: 30px;
+    backdrop-filter: blur(3px);
+  }
+  .openstatus.badge.is-open { border-color: rgba(111,191,115,0.5); }
+
+  /* inline: compact, e.g. header */
+  .openstatus.inline { font-size: 0.78rem; color: #BEAF92; }
+  .openstatus.inline.is-open { color: #cfe6d6; }
+  @media (prefers-reduced-motion: reduce) {
+    .openstatus.is-open .dot { box-shadow: none; }
+  }
+</style>

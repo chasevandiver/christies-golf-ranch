@@ -1,0 +1,133 @@
+---
+import { site, addressLine } from '../config/site';
+
+/**
+ * Monthly Play Day section with a live countdown and one-tap add-to-calendar
+ * (ticket 4.2). The target date — the last Friday of each month — is computed
+ * client-side and rolls over automatically, so it never needs manual editing.
+ *
+ * No specific start time is published for Play Day, so the .ics is an all-day
+ * event (valid, and avoids inventing a time). Update to a timed event if Jeff
+ * sets fixed Play Day hours.
+ */
+---
+<section class="section on-dark playday" id="playday">
+  <div class="wrap">
+    <div class="copy reveal">
+      <span class="eyebrow">Last Friday, every month</span>
+      <h2>Monthly Play Day on the par-3</h2>
+      <p class="intro">Unlimited golf on the nine-hole, par-3 course — real greens, real slopes, no tee times. Just ride up and play. The course opens for events like this; the range is open daily.</p>
+      <div class="countdown" id="pd-countdown" aria-live="polite" hidden>
+        <div class="cd-unit"><b data-days>—</b><span>days</span></div>
+        <div class="cd-unit"><b data-hours>—</b><span>hrs</span></div>
+        <div class="cd-unit"><b data-mins>—</b><span>min</span></div>
+      </div>
+      <p class="pd-date" id="pd-date"></p>
+      <div class="pd-actions">
+        <button type="button" class="btn btn-brass" id="pd-ics">Add to Calendar</button>
+        <a class="btn btn-outline" href={site.phoneHref}>Questions? Call {site.phone}</a>
+      </div>
+    </div>
+    <div class="price reveal"><div class="big">$25</div><div class="sub">Unlimited play · per golfer</div></div>
+  </div>
+</section>
+
+<script define:vars={{ addressLine, name: site.name, url: site.url }}>
+  // Last Friday (day 5) of a given month (monthIndex 0-11).
+  function lastFriday(year, monthIndex) {
+    const last = new Date(year, monthIndex + 1, 0);
+    const back = (last.getDay() - 5 + 7) % 7;
+    last.setDate(last.getDate() - back);
+    return last;
+  }
+
+  function nextPlayDay() {
+    const now = new Date();
+    let d = lastFriday(now.getFullYear(), now.getMonth());
+    // If this month's Play Day Friday has fully passed, roll to next month.
+    const endOfDay = new Date(d); endOfDay.setHours(23, 59, 59, 999);
+    if (now > endOfDay) d = lastFriday(now.getFullYear(), now.getMonth() + 1);
+    return d;
+  }
+
+  const target = nextPlayDay();
+  const cd = document.getElementById('pd-countdown');
+  const dateEl = document.getElementById('pd-date');
+
+  if (dateEl) {
+    dateEl.textContent = 'Next Play Day · ' +
+      target.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
+  }
+
+  function tick() {
+    if (!cd) return;
+    const diff = target.getTime() - Date.now();
+    if (diff <= 0) { cd.hidden = true; return; }
+    cd.hidden = false;
+    const days = Math.floor(diff / 86400000);
+    const hours = Math.floor((diff % 86400000) / 3600000);
+    const mins = Math.floor((diff % 3600000) / 60000);
+    cd.querySelector('[data-days]').textContent = String(days);
+    cd.querySelector('[data-hours]').textContent = String(hours);
+    cd.querySelector('[data-mins]').textContent = String(mins);
+  }
+  tick();
+  setInterval(tick, 30000);
+
+  // Build + download an all-day .ics for the next Play Day.
+  function pad(n) { return String(n).padStart(2, '0'); }
+  function ymd(d) { return `${d.getFullYear()}${pad(d.getMonth() + 1)}${pad(d.getDate())}`; }
+
+  document.getElementById('pd-ics')?.addEventListener('click', () => {
+    const dayAfter = new Date(target); dayAfter.setDate(dayAfter.getDate() + 1);
+    const stamp = new Date().toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+    const ics = [
+      'BEGIN:VCALENDAR',
+      'VERSION:2.0',
+      'PRODID:-//Christies Golf Ranch//Play Day//EN',
+      'CALSCALE:GREGORIAN',
+      'BEGIN:VEVENT',
+      `UID:playday-${ymd(target)}@christiesgolfranch.com`,
+      `DTSTAMP:${stamp}`,
+      `DTSTART;VALUE=DATE:${ymd(target)}`,
+      `DTEND;VALUE=DATE:${ymd(dayAfter)}`,
+      `SUMMARY:${name} — Monthly Play Day`,
+      'DESCRIPTION:Unlimited par-3 golf, $25 per golfer. No tee times — just ride up and play.',
+      `LOCATION:${addressLine}`,
+      `URL:${url}/`,
+      'END:VEVENT',
+      'END:VCALENDAR',
+    ].join('\r\n');
+
+    const blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'christies-play-day.ics';
+    document.body.appendChild(a); a.click(); a.remove();
+    URL.revokeObjectURL(a.href);
+  });
+</script>
+
+<style>
+  .countdown { display: flex; gap: 0.8rem; margin: 1.6rem 0 0.4rem; }
+  .cd-unit {
+    min-width: 64px; text-align: center;
+    background: rgba(39,26,16,0.5);
+    border: 1px solid rgba(176,136,63,0.35);
+    border-radius: 6px; padding: 0.7rem 0.5rem;
+  }
+  .cd-unit b {
+    display: block; font-family: 'Bitter', Georgia, serif;
+    font-weight: 800; font-size: 1.9rem; color: #D4B26C; line-height: 1;
+  }
+  .cd-unit span {
+    font-size: 0.66rem; font-weight: 800; letter-spacing: 0.12em;
+    text-transform: uppercase; color: #BEAF92;
+  }
+  .pd-date {
+    font-weight: 800; font-size: 0.84rem; letter-spacing: 0.06em;
+    text-transform: uppercase; color: #D4B26C; margin: 0.8rem 0 1.4rem;
+  }
+  .pd-actions { display: flex; flex-wrap: wrap; gap: 0.9rem; }
+  #pd-ics { border: none; cursor: pointer; }
+</style>

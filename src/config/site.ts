@@ -35,13 +35,22 @@ export const site = {
   hours: {
     rangeHuman: 'Every day, 8am till dark',
     courseHuman: 'Special events & monthly Play Days',
-    // schema.org openingHours shorthand
-    schema: 'Mo-Su 08:00-19:00',
+    // schema.org openingHours shorthand. Closing is sunset ("dark"); 20:00 is a
+    // schema-friendly approximation — the live "Open now" badge uses real sunset.
+    schema: 'Mo-Su 08:00-20:00',
+    opens: '08:00',
+    closesApprox: '20:00',
   },
+
+  // IANA timezone — used by the live "Open now" sunset badge and Play Day countdown.
+  timezone: 'America/Chicago',
 
   // --- SEO / schema ---
   priceRange: '$$',
   geo: { latitude: 33.3568, longitude: -96.9886 }, // approx — verify before launch
+  // Nearby towns for local-search areaServed. Pilot Point is home; the rest are
+  // within the realistic drive radius for a North Texas grass range.
+  areaServed: ['Pilot Point', 'Aubrey', 'Denton', 'Cross Roads', 'Krugerville', 'Tioga', 'Little Elm'],
 
   // --- Social / sameAs (also used for footer icons) ---
   social: {
@@ -55,6 +64,10 @@ export const site = {
     juniorCampForm:
       'https://docs.google.com/forms/d/1ZBeZ7lZ-l9Z81URQeMBAvZqUVKW-TpYJ_AMKosipxIg',
     map: 'https://maps.google.com/maps?q=920%20US%20Highway%20377%2C%20Pilot%20Point%2C%20TX%2076258&t=&z=13&ie=UTF8&iwloc=&output=embed',
+    // Turn-by-turn directions (used by the sticky mobile action bar). Opens the
+    // device's default maps app to navigate to the ranch.
+    directions:
+      'https://www.google.com/maps/dir/?api=1&destination=920%20US%20Highway%20377%2C%20Pilot%20Point%2C%20TX%2076258',
   },
 } as const;
 

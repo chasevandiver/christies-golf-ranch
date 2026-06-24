@@ -1,0 +1,8 @@
+# Christie's Golf Ranch — robots.txt (ticket 2.4)
+User-agent: *
+Allow: /
+
+# Style exploration drafts are not for indexing.
+Disallow: /styles/
+
+Sitemap: https://christiesgolfranch.com/sitemap.xml
