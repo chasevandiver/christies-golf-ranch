@@ -1,0 +1,21 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { site } from '../config/site';
+const title = "Golf Lessons in Pilot Point, TX — Private Instruction with Jeff Christie";
+const description = "Private golf lessons with Jeff Christie at Christie's Golf Ranch in Pilot Point, TX. Single hours and 3, 5, and 7-lesson packages for individuals, families, and teams.";
+---
+<Layout title={title} description={description}>
+  <section class="page-hero">
+    <div class="wrap">
+      <p class="crumbs"><a href="/">Home</a> · Instruction</p>
+      <h1>Instruction</h1>
+      <p class="lede">Private coaching with Jeff Christie — refine what works, don't rebuild it. For individuals, families, and the local high school team.</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="wrap">
+      <p class="stub-note">Full instruction page coming next — building the Home page first for review. Lesson packages and Jeff's coaching approach will live here.</p>
+      <div style="margin-top:1.8rem"><a class="btn btn-brass" href={site.phoneHref}>Call {site.phone}</a></div>
+    </div>
+  </section>
+</Layout>

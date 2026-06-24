@@ -1,0 +1,44 @@
+---
+/**
+ * Branding-iron seal — the ranch signature.
+ * Two variants, both lifted from the approved design:
+ *   - "mark": compact 46px emblem used in the header brand and footer
+ *   - "full": the full hero seal with arched "PILOT POINT · TEXAS" text,
+ *             flag emblem, name, and "EST. 2008"
+ */
+interface Props {
+  variant?: 'mark' | 'full';
+  class?: string;
+}
+const { variant = 'mark', class: className } = Astro.props;
+---
+{variant === 'mark' ? (
+  <svg class={`mark ${className ?? ''}`} viewBox="0 0 100 100" fill="none" aria-hidden="true">
+    <circle cx="50" cy="50" r="46" stroke="#B0883F" stroke-width="2.5" />
+    <circle cx="50" cy="50" r="39" stroke="#B0883F" stroke-width="1" />
+    <path d="M42 70V34" stroke="#D4B26C" stroke-width="3" stroke-linecap="round" />
+    <path d="M42 34l18 6-18 6V34z" fill="#D4B26C" />
+    <ellipse cx="50" cy="71" rx="16" ry="3" fill="#44542F" />
+  </svg>
+) : (
+  <svg class={className} viewBox="0 0 220 220" fill="none" aria-label="Christie's Golf Ranch seal">
+    <circle cx="110" cy="110" r="104" stroke="#B0883F" stroke-width="2.5" />
+    <circle cx="110" cy="110" r="94" stroke="#B0883F" stroke-width="1.2" />
+    <circle cx="110" cy="110" r="70" stroke="#B0883F" stroke-width="1" stroke-dasharray="1 7" />
+    <defs><path id="topArc" d="M38 110 A72 72 0 0 1 182 110" /></defs>
+    <text fill="#D4B26C" font-family="Mulish, sans-serif" font-size="13" font-weight="800" letter-spacing="4" text-anchor="middle">
+      <textPath href="#topArc" startOffset="50%">PILOT POINT · TEXAS</textPath>
+    </text>
+    <!-- flag emblem -->
+    <path d="M96 132V78" stroke="#D4B26C" stroke-width="4" stroke-linecap="round" />
+    <path d="M96 78l30 10-30 10V78z" fill="#D4B26C" />
+    <ellipse cx="110" cy="133" rx="30" ry="5" fill="#44542F" />
+    <circle cx="124" cy="129" r="3" fill="#F1E8D4" />
+    <!-- name -->
+    <text x="110" y="160" fill="#F1E8D4" font-family="Bitter, serif" font-size="16" font-weight="800" letter-spacing="1" text-anchor="middle">CHRISTIE'S</text>
+    <text x="110" y="178" fill="#F1E8D4" font-family="Bitter, serif" font-size="13" font-weight="700" letter-spacing="2" text-anchor="middle">GOLF RANCH</text>
+    <line x1="74" y1="190" x2="92" y2="190" stroke="#B0883F" stroke-width="1.4" />
+    <line x1="128" y1="190" x2="146" y2="190" stroke="#B0883F" stroke-width="1.4" />
+    <text x="110" y="194" fill="#D4B26C" font-family="Mulish, sans-serif" font-size="9" font-weight="800" letter-spacing="3" text-anchor="middle">EST. 2008</text>
+  </svg>
+)}

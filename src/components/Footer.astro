@@ -1,0 +1,24 @@
+---
+import { site, nav, addressLine } from '../config/site';
+import Seal from './Seal.astro';
+const year = new Date().getFullYear();
+---
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <a class="brand" href="/" style="text-decoration:none">
+        <Seal variant="mark" />
+        <span class="name" style="color:var(--cream)">{site.name}</span>
+      </a>
+      <ul class="foot-nav">
+        {nav.map((item) => (<li><a href={item.href}>{item.label}</a></li>))}
+      </ul>
+      <div class="socials">
+        <a href={site.social.facebook} target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+        <a href={site.social.instagram} target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg></a>
+        <a href={site.social.yelp} target="_blank" rel="noopener" aria-label="Yelp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11 3v9l-5-3a14 14 0 0 1 5-6zM5 13l5 1-4 4a12 12 0 0 1-1-5zm8 3l1 5a12 12 0 0 1-5-1zm3-1l5-1a12 12 0 0 1-2 4zm-1-4l4-4a13 13 0 0 1 1 5z"/></svg></a>
+      </div>
+    </div>
+    <p class="copyright">© {year} {site.name} · {addressLine} · {site.phone} — All rights reserved.</p>
+  </div>
+</footer>

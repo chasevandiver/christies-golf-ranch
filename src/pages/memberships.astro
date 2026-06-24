@@ -1,0 +1,21 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { site } from '../config/site';
+const title = "Memberships — Christie's Golf Ranch | Unlimited Range in Pilot Point, TX";
+const description = "Monthly memberships at Christie's Golf Ranch in Pilot Point, TX — unlimited use of the all-grass practice facility and range balls, with an optional monthly lesson.";
+---
+<Layout title={title} description={description}>
+  <section class="page-hero">
+    <div class="wrap">
+      <p class="crumbs"><a href="/">Home</a> · Memberships</p>
+      <h1>Memberships</h1>
+      <p class="lede">For regulars, it pays off fast — unlimited use of the practice facility and range balls, with an optional monthly lesson.</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="wrap">
+      <p class="stub-note">Full memberships page coming next — building the Home page first for review. Membership tiers and sign-up will live here (Clover checkout arrives in a later phase).</p>
+      <div style="margin-top:1.8rem"><a class="btn btn-brass" href={site.phoneHref}>Inquire to Join</a></div>
+    </div>
+  </section>
+</Layout>

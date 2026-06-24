@@ -1,0 +1,21 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { site } from '../config/site';
+const title = "Junior Golf Camp near Denton — Summer Camp at Christie's Golf Ranch";
+const description = "Summer junior golf camp at Christie's Golf Ranch in Pilot Point, TX. Ages 8–12, 4-day camps, 2 hours daily — etiquette, rules, grip, posture, and full-swing fundamentals.";
+---
+<Layout title={title} description={description}>
+  <section class="page-hero">
+    <div class="wrap">
+      <p class="crumbs"><a href="/">Home</a> · Junior Camp</p>
+      <h1>Junior Camp</h1>
+      <p class="lede">Ages 8–12 · 4-day camps · 2 hours daily. A proper foundation taught in small groups with plenty of reps.</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="wrap">
+      <p class="stub-note">Full junior camp page coming next — building the Home page first for review. Camp details and registration will live here.</p>
+      <div style="margin-top:1.8rem"><a class="btn btn-brass" href={site.links.juniorCampForm} target="_blank" rel="noopener">Register for 2026</a></div>
+    </div>
+  </section>
+</Layout>
