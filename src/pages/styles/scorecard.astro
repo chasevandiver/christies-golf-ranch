@@ -1,0 +1,229 @@
+---
+import { site, addressLine } from '../../config/site';
+const title = "Scorecard — Style C | Christie's Golf Ranch";
+---
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex" />
+  <title>{title}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="bar">Style C · Scorecard — <a href="/styles">back to all styles</a></div>
+
+  <header class="nav">
+    <a class="brand" href="#top"><span class="b1">CHRISTIE'S</span><span class="b2">GOLF RANCH</span></a>
+    <nav class="links">
+      <a href="#range">Range</a>
+      <a href="#card">Rates</a>
+      <a href="#learn">Lessons</a>
+      <a href="#visit">Visit</a>
+    </nav>
+    <a class="btn" href={site.phoneHref}>{site.phone}</a>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="hero-l">
+      <span class="flagline">EST. {site.established} · PILOT POINT, TEXAS</span>
+      <h1>The all-grass range &amp; par-3 that keeps it simple.</h1>
+      <p>55 grass stations. A real 9-hole par-3. 15 acres. Posted pricing and no surprises — walk up any day and play.</p>
+      <div class="cta">
+        <a class="btn solid" href="#card">See the Rates</a>
+        <a class="btn out" href="#visit">Hours &amp; Directions</a>
+      </div>
+    </div>
+    <div class="hero-r">
+      <table class="mini">
+        <thead><tr><th>HOLE</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>TOT</th></tr></thead>
+        <tbody>
+          <tr><td>PAR</td><td>3</td><td>3</td><td>3</td><td>3</td><td>3</td><td>3</td><td>3</td><td>3</td><td>3</td><td>27</td></tr>
+          <tr class="yds"><td>YDS</td><td>62</td><td>74</td><td>55</td><td>68</td><td>60</td><td>71</td><td>58</td><td>65</td><td>70</td><td>583</td></tr>
+        </tbody>
+      </table>
+      <p class="cardnote">Sample par-3 scorecard · confirm real yardages before launch</p>
+    </div>
+  </section>
+
+  <!-- STAT STRIP -->
+  <section class="strip">
+    <div><b>55</b><span>STATIONS</span></div>
+    <div><b>9</b><span>PAR-3 HOLES</span></div>
+    <div><b>15</b><span>ACRES</span></div>
+    <div><b>365</b><span>DAYS OPEN</span></div>
+  </section>
+
+  <!-- RANGE -->
+  <section class="sec" id="range">
+    <h2><span class="hash">#</span> The Facility</h2>
+    <div class="grid4">
+      <div class="tile"><h3>Driving Range</h3><p>55 all-grass stations, never a mat. Buckets of 75 or 150 balls.</p></div>
+      <div class="tile"><h3>Par-3 Course</h3><p>Nine real holes with slope and pin variety. Open for events &amp; Play Days.</p></div>
+      <div class="tile"><h3>Short Game</h3><p>Chipping and putting greens, plus bunkers and water to practice around.</p></div>
+      <div class="tile"><h3>Pro Shop</h3><p>Essentials on the way in, plus clinics, events, and birthday parties.</p></div>
+    </div>
+  </section>
+
+  <!-- SCORECARD RATES -->
+  <section class="sec card" id="card">
+    <h2><span class="hash">#</span> Rates — posted, no surprises</h2>
+    <table class="rate">
+      <tbody>
+        <tr class="grp"><td colspan="3">RANGE</td></tr>
+        <tr><td>Small bucket</td><td class="d">75 balls</td><td class="p">$17</td></tr>
+        <tr><td>Large bucket</td><td class="d">150 balls</td><td class="p">$25</td></tr>
+        <tr class="grp"><td colspan="3">MEMBERSHIP <span>· 3-month minimum · unlimited balls</span></td></tr>
+        <tr><td>Practice</td><td class="d">unlimited facility + balls</td><td class="p">$90<i>/mo</i></td></tr>
+        <tr class="hl"><td>Practice + Monthly Lesson</td><td class="d">+ one 30-min lesson / month</td><td class="p">$130<i>/mo</i></td></tr>
+        <tr class="grp"><td colspan="3">INSTRUCTION <span>· with Jeff Christie</span></td></tr>
+        <tr><td>Single hour</td><td class="d">one-on-one</td><td class="p">$95</td></tr>
+        <tr><td>3-lesson package</td><td class="d">$90 / lesson</td><td class="p">$270</td></tr>
+        <tr><td>5-lesson package</td><td class="d">$85 / lesson</td><td class="p">$425</td></tr>
+        <tr><td>7-lesson package</td><td class="d">$80 / lesson</td><td class="p">$560</td></tr>
+        <tr class="grp"><td colspan="3">EVENTS</td></tr>
+        <tr><td>Monthly Play Day</td><td class="d">unlimited par-3 · last Fri</td><td class="p">$25</td></tr>
+        <tr><td>Junior Camp</td><td class="d">ages 8–12 · 4 days · 2 hrs/day</td><td class="p">Call</td></tr>
+      </tbody>
+    </table>
+    <!-- Phase 2: Clover Hosted Checkout button replaces this. -->
+    <div class="cardcta">
+      <a class="btn solid" href={site.phoneHref}>Join / Book · {site.phone}</a>
+      <a class="btn out" href={site.links.juniorCampForm} target="_blank" rel="noopener">Junior Camp Registration</a>
+    </div>
+  </section>
+
+  <!-- LEARN -->
+  <section class="sec" id="learn">
+    <div class="split">
+      <div>
+        <h2><span class="hash">#</span> Lessons</h2>
+        <p class="lead">Golf is a mental game. Jeff Christie builds on the skills you already have — for individuals, families, and the local high school team. Single hours or packages, your call.</p>
+        <a class="btn solid" href={site.phoneHref}>Book a lesson</a>
+      </div>
+      <div>
+        <h2><span class="hash">#</span> Junior Camp</h2>
+        <p class="lead">Ages 8–12 · 4-day camps · 2 hours daily. Etiquette, rules, grip, posture and full-swing basics — small groups, plenty of reps.</p>
+        <!-- DRAFT: confirm 2026 camp dates & price before launch. -->
+        <a class="btn out" href={site.links.juniorCampForm} target="_blank" rel="noopener">Register for 2026</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISIT -->
+  <section class="sec visit" id="visit">
+    <h2><span class="hash">#</span> Visit</h2>
+    <div class="vgrid">
+      <table class="info">
+        <tbody>
+          <tr><td>LOCATION</td><td>{addressLine}</td></tr>
+          <tr><td>RANGE HRS</td><td>{site.hours.rangeHuman}</td></tr>
+          <tr><td>COURSE</td><td>{site.hours.courseHuman}</td></tr>
+          <tr><td>PHONE</td><td><a href={site.phoneHref}>{site.phone}</a></td></tr>
+          <tr><td>EMAIL</td><td><a href={`mailto:${site.email}`}>{site.email}</a></td></tr>
+        </tbody>
+      </table>
+      <div class="vmap">
+        <iframe title="Map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src={site.links.map}></iframe>
+      </div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <p>CHRISTIE'S GOLF RANCH · {addressLine} · {site.phone}</p>
+    <p class="small">Style C draft — not the live site. <a href="/styles">Compare all three styles</a></p>
+  </footer>
+
+  <style is:global>
+    *{box-sizing:border-box}
+    body{margin:0;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#14241a;background:#fff;line-height:1.6}
+    h1,h2,h3{font-family:'Oswald',sans-serif;margin:0;line-height:1.05;text-transform:uppercase;letter-spacing:.01em}
+    a{color:inherit}
+  </style>
+  <style>
+    :root{--green:#1f7a44;--green-d:#14331f;--red:#C8362B;--ink:#14241a;--soft:#5a6b5e;--line:#dfe6e0;--paper:#f5f8f4;--mono:'IBM Plex Mono',monospace}
+    .bar{background:var(--green-d);color:#bfe0cb;text-align:center;font-size:.8rem;font-weight:600;padding:.5rem;font-family:var(--mono)}
+    .bar a{color:#8fdcab}
+
+    .nav{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.7rem clamp(16px,4vw,44px);background:#fff;border-bottom:3px solid var(--green-d)}
+    .brand{display:flex;flex-direction:column;text-decoration:none;line-height:.95}
+    .brand .b1{font-family:'Oswald';font-weight:700;font-size:1.15rem;color:var(--green-d);letter-spacing:.04em}
+    .brand .b2{font-family:'Oswald';font-weight:600;font-size:.7rem;color:var(--green);letter-spacing:.22em}
+    .links{display:flex;gap:1.5rem}
+    .links a{text-decoration:none;font-family:'Oswald';text-transform:uppercase;font-weight:600;font-size:.85rem;letter-spacing:.06em;color:var(--soft)}
+    .links a:hover{color:var(--red)}
+    @media(max-width:780px){.links{display:none}}
+
+    .btn{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;font-family:'Oswald';text-transform:uppercase;font-weight:600;font-size:.85rem;letter-spacing:.05em;padding:.7rem 1.3rem;border:2px solid var(--green-d);color:var(--green-d);background:#fff;border-radius:2px;transition:background .15s,color .15s}
+    .btn:hover{background:var(--green-d);color:#fff}
+    .btn.solid{background:var(--red);border-color:var(--red);color:#fff}
+    .btn.solid:hover{background:#a82a21;border-color:#a82a21}
+    .btn.out{background:#fff}
+
+    .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:2.5rem;align-items:center;padding:clamp(2.5rem,6vw,5rem) clamp(16px,5vw,56px);background:var(--paper);border-bottom:1px solid var(--line)}
+    .flagline{font-family:var(--mono);font-size:.78rem;font-weight:600;letter-spacing:.12em;color:var(--green);background:#e4efe6;display:inline-block;padding:.35rem .7rem;border-radius:2px}
+    .hero h1{font-size:clamp(2.4rem,5.5vw,4rem);font-weight:700;color:var(--green-d);margin:1.2rem 0 0;max-width:16ch}
+    .hero-l p{font-size:1.1rem;color:var(--soft);max-width:44ch;margin:1.1rem 0 0}
+    .cta{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:1.8rem}
+    .hero-r{background:#fff;border:1px solid var(--line);border-radius:4px;padding:1.2rem;box-shadow:0 20px 40px -28px rgba(20,51,31,.5)}
+    table.mini{width:100%;border-collapse:collapse;font-family:var(--mono);font-size:.82rem}
+    table.mini th,table.mini td{border:1px solid var(--line);padding:.5rem .2rem;text-align:center}
+    table.mini thead th{background:var(--green-d);color:#fff;font-weight:600}
+    table.mini td:first-child,table.mini th:first-child{text-align:left;padding-left:.6rem;color:var(--soft)}
+    table.mini tbody td:last-child{background:#f0f5f1;font-weight:700;color:var(--green-d)}
+    table.mini .yds td{color:var(--soft)}
+    .cardnote{font-family:var(--mono);font-size:.72rem;color:var(--soft);margin:.8rem 0 0;text-align:center}
+    @media(max-width:820px){.hero{grid-template-columns:1fr}}
+
+    .strip{display:grid;grid-template-columns:repeat(4,1fr);background:var(--green-d)}
+    .strip div{padding:1.6rem 1rem;text-align:center;border-right:1px solid rgba(255,255,255,.12)}
+    .strip div:last-child{border-right:none}
+    .strip b{font-family:'Oswald';display:block;font-size:2.4rem;color:#fff;font-weight:700}
+    .strip span{font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;color:#8fc6a2}
+    @media(max-width:560px){.strip{grid-template-columns:1fr 1fr}.strip div:nth-child(2){border-right:none}}
+
+    .sec{max-width:1080px;margin:0 auto;padding:clamp(3rem,6vw,5rem) clamp(16px,5vw,44px)}
+    h2{font-size:clamp(1.5rem,3.4vw,2.2rem);font-weight:600;color:var(--green-d);margin-bottom:1.6rem;display:flex;align-items:baseline;gap:.6rem}
+    .hash{color:var(--red);font-weight:700}
+    .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--line)}
+    @media(max-width:780px){.grid4{grid-template-columns:1fr 1fr}}
+    .tile{padding:1.5rem;border-right:1px solid var(--line)}
+    .grid4 .tile:last-child{border-right:none}
+    .tile h3{font-size:1.15rem;color:var(--green);font-weight:600;margin-bottom:.5rem}
+    .tile p{margin:0;color:var(--soft);font-size:.92rem}
+
+    .card{max-width:860px}
+    table.rate{width:100%;border-collapse:collapse;border:1px solid var(--line)}
+    table.rate td{padding:.8rem 1rem;border-bottom:1px solid var(--line)}
+    table.rate .grp td{background:var(--green-d);color:#fff;font-family:'Oswald';text-transform:uppercase;letter-spacing:.1em;font-size:.85rem;font-weight:600}
+    table.rate .grp span{font-family:var(--mono);text-transform:none;letter-spacing:0;color:#9fd1b0;font-size:.78rem;font-weight:500}
+    table.rate td.d{color:var(--soft);font-size:.9rem;width:42%}
+    table.rate td.p{text-align:right;font-family:var(--mono);font-weight:600;font-size:1.15rem;color:var(--green-d);white-space:nowrap;width:18%}
+    table.rate td.p i{font-style:normal;font-size:.72rem;color:var(--soft)}
+    table.rate .hl td{background:#fbf0ef}
+    table.rate .hl td.p{color:var(--red)}
+    .cardcta{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:1.6rem}
+
+    .split{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem}
+    @media(max-width:760px){.split{grid-template-columns:1fr}}
+    .lead{color:var(--soft);font-size:1.05rem;margin:0 0 1.4rem;max-width:46ch}
+
+    .vgrid{display:grid;grid-template-columns:1fr 1.1fr;gap:2rem;align-items:stretch}
+    @media(max-width:760px){.vgrid{grid-template-columns:1fr}}
+    table.info{width:100%;border-collapse:collapse;border:1px solid var(--line);height:fit-content}
+    table.info td{padding:.85rem 1rem;border-bottom:1px solid var(--line)}
+    table.info td:first-child{font-family:var(--mono);font-size:.74rem;letter-spacing:.06em;color:var(--green);width:108px;vertical-align:top}
+    table.info a{color:var(--green-d);font-weight:600;text-decoration:none}
+    .vmap{border:1px solid var(--line);border-radius:3px;overflow:hidden;min-height:300px}
+    .vmap iframe{width:100%;height:100%;min-height:300px;border:0;display:block}
+
+    .foot{background:var(--green-d);color:#bfe0cb;text-align:center;padding:2.4rem 16px}
+    .foot p{margin:.3rem 0;font-family:var(--mono);font-size:.85rem}
+    .foot .small{color:#8fc6a2}
+    .foot a{color:#bfe9cd}
+  </style>
+</body>
+</html>
