@@ -12,10 +12,73 @@ const description = "Monthly memberships at Christie's Golf Ranch in Pilot Point
       <p class="lede">For regulars, it pays off fast — unlimited use of the practice facility and range balls, with an optional monthly lesson.</p>
     </div>
   </section>
+
+  <!-- TIERS -->
   <section class="section">
     <div class="wrap">
-      <p class="stub-note">Full memberships page coming next — building the Home page first for review. Membership tiers and sign-up will live here (Clover checkout arrives in a later phase).</p>
-      <div style="margin-top:1.8rem"><a class="btn btn-brass" href={site.phoneHref}>Inquire to Join</a></div>
+      <div class="reveal">
+        <span class="eyebrow">Choose Your Plan</span>
+        <h2>Two ways to make the ranch your home course</h2>
+        <p class="intro">No membership is required to walk up and hit balls — but if you're out here often, a membership quickly pays for itself. Three-month minimum on either plan.</p>
+      </div>
+
+      <div class="price-band reveal">
+        <div class="band-head"><h3>Monthly memberships</h3><span class="note">3-month minimum · unlimited range balls</span></div>
+        <div class="pgrid c2">
+          <div class="pcard">
+            <h4>Practice Membership</h4>
+            <div class="amt">$90<span> / month</span></div>
+            <ul>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Unlimited use of the practice facility</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Unlimited range balls</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Chipping, putting &amp; short-game areas</li>
+            </ul>
+            <!-- Phase 2: replace with Clover Hosted Checkout button. -->
+            <div class="cta"><a class="btn btn-dark" href={site.phoneHref}>Inquire to Join</a></div>
+          </div>
+          <div class="pcard hi">
+            <span class="flag">Best value</span>
+            <h4>Practice + Monthly Lesson</h4>
+            <div class="amt">$130<span> / month</span></div>
+            <ul>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Unlimited practice &amp; range balls</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>One 30-minute lesson every month with Jeff</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Steady coaching to keep your game on track</li>
+            </ul>
+            <!-- Phase 2: replace with Clover Hosted Checkout button. -->
+            <div class="cta"><a class="btn btn-brass" href={site.phoneHref}>Inquire to Join</a></div>
+          </div>
+        </div>
+        <p class="editnote reveal">Pay-as-you-go is always welcome too — small bucket $17, large bucket $25. See the full <a href="/pricing" style="color:var(--leather);font-weight:800">rate sheet</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY -->
+  <section class="section on-dark">
+    <div class="wrap">
+      <div class="reveal">
+        <span class="eyebrow">Why Join</span>
+        <h2>Built for the player who keeps coming back</h2>
+      </div>
+      <div class="feat-grid reveal">
+        <div class="feat"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2v13"/><path d="M12 2l7 2.5L12 7"/><ellipse cx="12" cy="19" rx="7" ry="2.5"/></svg></div><h3>Hit as much as you want</h3><p>Unlimited range balls every visit — no counting buckets, no watching the clock.</p></div>
+        <div class="feat"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 16 14"/></svg></div><h3>Open every day</h3><p>The range is open daily, {site.hours.rangeHuman.toLowerCase()} — practice on your schedule.</p></div>
+        <div class="feat"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l3 7 7 .5-5.5 4.5L18 21l-6-4-6 4 1.5-7L2 9.5 9 9z"/></svg></div><h3>Coaching built in</h3><p>Add a monthly lesson and keep steady, real progress instead of guessing.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section">
+    <div class="wrap reveal" style="text-align:center">
+      <span class="eyebrow" style="justify-content:center">Ready to Join</span>
+      <h2 style="margin:0 auto">Sign up in a quick phone call</h2>
+      <p class="intro" style="margin:1.1rem auto 2rem">Online membership checkout is coming soon. For now, give us a call and we'll get you set up.</p>
+      <div class="hero-actions" style="justify-content:center">
+        <a class="btn btn-brass btn-lg" href={site.phoneHref}>Call {site.phone}</a>
+        <a class="btn btn-dark btn-lg" href="/visit">Hours &amp; Directions</a>
+      </div>
     </div>
   </section>
 </Layout>

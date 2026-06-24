@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Photo from '../components/Photo.astro';
 import { site } from '../config/site';
 const title = "Junior Golf Camp near Denton — Summer Camp at Christie's Golf Ranch";
 const description = "Summer junior golf camp at Christie's Golf Ranch in Pilot Point, TX. Ages 8–12, 4-day camps, 2 hours daily — etiquette, rules, grip, posture, and full-swing fundamentals.";
@@ -12,10 +13,67 @@ const description = "Summer junior golf camp at Christie's Golf Ranch in Pilot P
       <p class="lede">Ages 8–12 · 4-day camps · 2 hours daily. A proper foundation taught in small groups with plenty of reps.</p>
     </div>
   </section>
+
+  <!-- OVERVIEW -->
+  <section class="section">
+    <div class="wrap about-grid">
+      <div class="about-copy reveal">
+        <span class="eyebrow">Summer Camp</span>
+        <h2>A real foundation, taught the right way</h2>
+        <p>Our junior camp gives young players a proper start in the game — not just swinging clubs, but learning how to carry themselves on a course. Kids work in small groups so everyone gets plenty of reps and real attention.</p>
+        <p>Each camp runs four days, two hours a day, for ages 8–12. By the end of the week, campers have the fundamentals they need to keep enjoying golf for years.</p>
+        <div style="margin-top:1.8rem">
+          <a class="btn btn-dark" href={site.links.juniorCampForm} target="_blank" rel="noopener">Register for 2026</a>
+        </div>
+      </div>
+      <Photo class="reveal" marker="juniors lined up on the range" tag="juniors on the range" scene="dawn" />
+    </div>
+  </section>
+
+  <!-- CURRICULUM -->
+  <section class="section on-dark">
+    <div class="wrap">
+      <div class="reveal">
+        <span class="eyebrow">What They Learn</span>
+        <h2>From first grip to full swing</h2>
+        <p class="intro">A complete introduction to the game, built around small groups and lots of hands-on practice.</p>
+      </div>
+      <div class="feat-grid reveal">
+        <div class="feat"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div><h3>Etiquette</h3><p>How to act on a course — respect, pace of play, and caring for the grounds.</p></div>
+        <div class="feat"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div><h3>The rules of golf</h3><p>The basics every player needs to know, explained in a way kids get.</p></div>
+        <div class="feat"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M18 11V6a2 2 0 0 0-2-2 2 2 0 0 0-2 2"/><path d="M14 10V4a2 2 0 0 0-2-2 2 2 0 0 0-2 2v2"/><path d="M10 10.5V6a2 2 0 0 0-2-2 2 2 0 0 0-2 2v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></svg></div><h3>Grip &amp; posture</h3><p>The setup that makes everything else easier — done right from day one.</p></div>
+        <div class="feat"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2v13"/><path d="M12 2l7 2.5L12 7"/><ellipse cx="12" cy="19" rx="7" ry="2.5"/></svg></div><h3>Full-swing fundamentals</h3><p>A repeatable swing built on solid basics, not quick fixes.</p></div>
+        <div class="feat"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><h3>Small groups</h3><p>Plenty of reps and real instruction — never lost in a crowd.</p></div>
+        <div class="feat"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 16 14"/></svg></div><h3>4 days · 2 hours daily</h3><p>Enough time to build real habits without overwhelming young players.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DETAILS / REGISTER -->
   <section class="section">
     <div class="wrap">
-      <p class="stub-note">Full junior camp page coming next — building the Home page first for review. Camp details and registration will live here.</p>
-      <div style="margin-top:1.8rem"><a class="btn btn-brass" href={site.links.juniorCampForm} target="_blank" rel="noopener">Register for 2026</a></div>
+      <div class="price-band reveal">
+        <div class="band-head"><h3>Camp details</h3><span class="note">Ages 8–12 · summer sessions</span></div>
+        <div class="pgrid c2">
+          <div class="pcard">
+            <h4>At a glance</h4>
+            <ul>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Ages 8–12</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>4-day camps, 2 hours each day</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Small groups with real instruction</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Clubs available if your camper needs them</li>
+            </ul>
+            <!-- DRAFT: confirm 2026 session dates and price with Chase before launch. -->
+            <p class="desc">2026 session dates and pricing are being finalized — call for the latest, or register through the form and we'll be in touch.</p>
+          </div>
+          <div class="pcard hi" style="justify-content:center;text-align:center;align-items:center">
+            <h4>Register for 2026</h4>
+            <p class="desc">Sign up through our registration form, or call with any questions.</p>
+            <div class="cta"><a class="btn btn-brass btn-lg" href={site.links.juniorCampForm} target="_blank" rel="noopener">Open the Form</a></div>
+            <div style="margin-top:.8rem"><a class="btn btn-dark" href={site.phoneHref}>Call {site.phone}</a></div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 </Layout>

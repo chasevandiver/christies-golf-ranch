@@ -1,5 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Photo from '../components/Photo.astro';
+import { site } from '../config/site';
 const title = "The Ranch — Christie's Golf Ranch | Driving Range & Par-3 in Pilot Point, TX";
 const description = "Tour Christie's Golf Ranch: a 55-station all-grass driving range, 9-hole par-3 course, chipping and putting greens, bunkers and water on 15 acres in Pilot Point, TX.";
 ---
@@ -11,10 +13,82 @@ const description = "Tour Christie's Golf Ranch: a 55-station all-grass driving 
       <p class="lede">A 55-station all-grass range, a 9-hole par-3 course, and dedicated short-game grounds across fifteen acres of Pilot Point horse country.</p>
     </div>
   </section>
+
+  <!-- INTRO -->
   <section class="section">
+    <div class="wrap about-grid">
+      <div class="about-copy reveal">
+        <span class="eyebrow">The Grounds</span>
+        <h2>Fifteen acres built for real practice</h2>
+        <p>Christie's Golf Ranch is a one-of-a-kind, all-grass practice facility in the heart of horse country. Everything here is purpose-built so you can work on every part of your game on genuine Texas turf — never off a mat.</p>
+        <p>Whether you're grooving the long ball, sharpening the short game, or learning the rules for the first time, the grounds are kept in good shape year-round and welcome to everyone — beginners, families, and seasoned players alike.</p>
+        <div style="margin-top:1.8rem">
+          <a class="btn btn-dark" href="/pricing">View Pricing</a>
+        </div>
+      </div>
+      <Photo class="reveal" marker="wide view of the range" tag="wide range view" scene="range" />
+    </div>
+  </section>
+
+  <!-- FACILITY -->
+  <section class="section on-dark">
     <div class="wrap">
-      <p class="stub-note">Full facility page coming next — building the Home page first for review. The facility highlights, gallery, and grounds details from the approved design will live here.</p>
-      <div style="margin-top:1.8rem"><a class="btn btn-brass" href="/">Back to Home</a></div>
+      <div class="reveal">
+        <span class="eyebrow">The Facility</span>
+        <h2>Every part of the game, on real Texas grass</h2>
+        <p class="intro">From the long ball to the short game, everything that holds up on the course — all in one place.</p>
+      </div>
+      <div class="feat-grid reveal">
+        <div class="feat"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2v13"/><path d="M12 2l7 2.5L12 7"/><ellipse cx="12" cy="19" rx="7" ry="2.5"/></svg></div><h3>55 grass stations</h3><p>A full-service, all-grass range — never off a mat. Buckets from 75 to 150 balls.</p></div>
+        <div class="feat"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18M3 12h18"/></svg></div><h3>9-hole par-3 course</h3><p>Greens with genuine slope and pin variety. Open for events and monthly Play Days.</p></div>
+        <div class="feat"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 18c0-4 3-7 7-7s7 3 7 7"/><path d="M3 18h18"/><circle cx="12" cy="8" r="2"/></svg></div><h3>Chipping &amp; putting greens</h3><p>Dedicated short-game areas to sharpen the shots that actually lower scores.</p></div>
+        <div class="feat"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 16c4-6 8 4 12-2s6 2 8-2"/><path d="M2 20h20"/></svg></div><h3>Bunkers &amp; water</h3><p>Practice from the sand and around the water, so nothing surprises you in a round.</p></div>
+        <div class="feat"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l3 7 7 .5-5.5 4.5L18 21l-6-4-6 4 1.5-7L2 9.5 9 9z"/></svg></div><h3>Three 60+ yard holes</h3><p>Real practice holes bridging the gap between the range and the course.</p></div>
+        <div class="feat"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 9l9-6 9 6v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/><path d="M9 21v-6h6v6"/></svg></div><h3>Pro shop</h3><p>What you need on the way in — plus details on clinics, events, and parties.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="section" id="gallery">
+    <div class="wrap">
+      <div class="reveal">
+        <span class="eyebrow">A Look Around</span>
+        <h2>The grounds, hole by hole</h2>
+        <p class="intro">These slots are sized and framed for real photography — drop the images in and the page fills out.</p>
+      </div>
+      <div class="gal reveal">
+        <Photo class="tall" marker="par-3 green with flag" tag="par-3 green" scene="green" />
+        <Photo marker="dawn over the tee box" tag="dawn tee box" scene="dawn" />
+        <Photo class="wide" marker="wide view down the range" tag="wide range view" scene="range" />
+        <Photo marker="the pro shop" tag="pro shop" scene="plain" />
+        <Photo class="wide" marker="a lesson in progress" tag="lesson in progress" scene="range" />
+      </div>
+    </div>
+  </section>
+
+  <!-- PLAY DAY -->
+  <section class="section on-dark playday">
+    <div class="wrap">
+      <div class="copy reveal">
+        <span class="eyebrow">Last Friday, every month</span>
+        <h2>Monthly Play Day on the par-3</h2>
+        <p class="intro">Unlimited golf on the nine-hole, par-3 course — real greens, real slopes, no tee times. Just ride up and play. The course opens for events like this; the range is open daily.</p>
+      </div>
+      <div class="price reveal"><div class="big">$25</div><div class="sub">Unlimited play · per golfer</div></div>
+    </div>
+  </section>
+
+  <!-- VISIT CTA -->
+  <section class="section">
+    <div class="wrap reveal" style="text-align:center">
+      <span class="eyebrow" style="justify-content:center">Come See It</span>
+      <h2 style="margin:0 auto">Ride out and walk the grounds</h2>
+      <p class="intro" style="margin:1.1rem auto 2rem">No tee times to hit the range — open every day, {site.hours.rangeHuman.toLowerCase()}.</p>
+      <div class="hero-actions" style="justify-content:center">
+        <a class="btn btn-brass btn-lg" href="/visit">Hours &amp; Directions</a>
+        <a class="btn btn-dark btn-lg" href={site.phoneHref}>Call {site.phone}</a>
+      </div>
     </div>
   </section>
 </Layout>

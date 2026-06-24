@@ -1,5 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Photo from '../components/Photo.astro';
+import { site } from '../config/site';
 const title = "Our Story — Christie's Golf Ranch | Built on Family Land Since 2008";
 const description = "The story of Christie's Golf Ranch — golf enthusiast Jeff Christie's lifelong dream, built in 2008 on Pilot Point family land in honor of his late father, Jim Christie.";
 ---
@@ -11,10 +13,60 @@ const description = "The story of Christie's Golf Ranch — golf enthusiast Jeff
       <p class="lede">A first-class golf venue, built on family land — the lifelong dream of golf enthusiast Jeff Christie.</p>
     </div>
   </section>
+
+  <!-- STORY -->
   <section class="section">
+    <div class="wrap about-grid">
+      <div class="about-copy reveal">
+        <span class="eyebrow">Since 2008</span>
+        <h2>A dream built in honor of family</h2>
+        <p>Christie's Golf Ranch is a one-of-a-kind driving range and nine-hole par-3 course nestled in the heart of horse country in Pilot Point. It began as the lifelong dream of golf enthusiast Jeff Christie, who bought the land in 2008 and built the venue in honor of his late father, Jim Christie.</p>
+        <p>What started as open Texas land became a full-service, all-grass practice facility — fifty-five stations, a pro shop, professional instruction, memberships, and a junior camp — where individuals, groups, and families build real skills on well-kept grounds.</p>
+        <p>The positioning has never been country-club. It's a welcoming, low-pressure place to get better at golf, whoever you are and wherever you're starting from.</p>
+        <p class="sig">"There are not many people living out their dream. I am doing that." — Jeff Christie</p>
+      </div>
+      <Photo class="reveal" marker="Jeff Christie at the ranch" tag="Jeff at the ranch" scene="dawn" />
+    </div>
+  </section>
+
+  <!-- MISSION -->
+  <section class="section mission">
+    <div class="wrap reveal">
+      <span class="eyebrow">Our Purpose</span>
+      <blockquote>"My mission is to teach young men and women self-worth through Jesus Christ — living it every day by giving God the glory and welcoming those He puts in front of me."</blockquote>
+      <p class="verse">"Commit your works to the Lord, and your plans will be established." — Proverbs 16:3</p>
+      <cite>Jeff Christie · Founder</cite>
+    </div>
+  </section>
+
+  <!-- WHAT WE'RE ABOUT -->
+  <section class="section on-dark">
     <div class="wrap">
-      <p class="stub-note">Full story page coming next — building the Home page first for review. Jeff's bio, the ranch history, and the mission will live here.</p>
-      <div style="margin-top:1.8rem"><a class="btn btn-brass" href="/">Back to Home</a></div>
+      <div class="reveal">
+        <span class="eyebrow">What We're About</span>
+        <h2>Welcoming, quick, and built to last</h2>
+      </div>
+      <div class="feat-grid reveal">
+        <div class="feat"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 9l9-6 9 6v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/><path d="M9 21v-6h6v6"/></svg></div><h3>Family-owned</h3><p>A family business on family land — built and run with care, not a corporate playbook.</p></div>
+        <div class="feat"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><h3>Welcome to all</h3><p>Beginners, families, and seasoned players alike — low-pressure and easy to walk up to.</p></div>
+        <div class="feat"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2v13"/><path d="M12 2l7 2.5L12 7"/><ellipse cx="12" cy="19" rx="7" ry="2.5"/></svg></div><h3>Real practice grounds</h3><p>All-grass stations and a true par-3 course — a serious place to actually get better.</p></div>
+      </div>
+      <div class="reveal" style="margin-top:2.6rem">
+        <a class="btn btn-brass" href="/the-ranch">Explore the Ranch</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section">
+    <div class="wrap reveal" style="text-align:center">
+      <span class="eyebrow" style="justify-content:center">Come Out</span>
+      <h2 style="margin:0 auto">See the dream for yourself</h2>
+      <p class="intro" style="margin:1.1rem auto 2rem">Ride out to {site.address.locality} and hit a few — the range is open every day.</p>
+      <div class="hero-actions" style="justify-content:center">
+        <a class="btn btn-brass btn-lg" href="/visit">Hours &amp; Directions</a>
+        <a class="btn btn-dark btn-lg" href="/pricing">View Pricing</a>
+      </div>
     </div>
   </section>
 </Layout>

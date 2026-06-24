@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Photo from '../components/Photo.astro';
 import { site } from '../config/site';
 const title = "Golf Lessons in Pilot Point, TX — Private Instruction with Jeff Christie";
 const description = "Private golf lessons with Jeff Christie at Christie's Golf Ranch in Pilot Point, TX. Single hours and 3, 5, and 7-lesson packages for individuals, families, and teams.";
@@ -12,10 +13,56 @@ const description = "Private golf lessons with Jeff Christie at Christie's Golf 
       <p class="lede">Private coaching with Jeff Christie — refine what works, don't rebuild it. For individuals, families, and the local high school team.</p>
     </div>
   </section>
+
+  <!-- APPROACH -->
   <section class="section">
+    <div class="wrap about-grid">
+      <div class="about-copy reveal">
+        <span class="eyebrow">The Approach</span>
+        <h2>Golf is a mental game</h2>
+        <p>Jeff coaches to enhance the skills you already have and build from there — not to tear your swing down and start over. The goal is a repeatable, confident motion that holds up under pressure on the course.</p>
+        <p>Lessons are one-on-one and meet you where you are: a first-timer learning grip and posture, a weekend player chasing more consistency, or a competitive junior sharpening for a season. Families and the local high school team are all welcome.</p>
+        <p class="sig">"There are not many people living out their dream. I am doing that." — Jeff Christie</p>
+        <div style="margin-top:1.8rem">
+          <a class="btn btn-dark" href={site.phoneHref}>Call {site.phone} to Book</a>
+        </div>
+      </div>
+      <Photo class="reveal" marker="Jeff giving a lesson on the range" tag="lesson in progress" scene="range" />
+    </div>
+  </section>
+
+  <!-- PACKAGES -->
+  <section class="section on-dark">
     <div class="wrap">
-      <p class="stub-note">Full instruction page coming next — building the Home page first for review. Lesson packages and Jeff's coaching approach will live here.</p>
-      <div style="margin-top:1.8rem"><a class="btn btn-brass" href={site.phoneHref}>Call {site.phone}</a></div>
+      <div class="reveal">
+        <span class="eyebrow">Lesson Packages</span>
+        <h2>Single hours or save with a package</h2>
+        <p class="intro">Buy a single lesson to get started, or a package to keep momentum. Packages can be split across family members.</p>
+      </div>
+      <div class="feat-grid reveal">
+        <div class="feat"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 16 14"/></svg></div><h3>Single hour — $95</h3><p>One focused hour. The best way to get started or tune up before a round.</p></div>
+        <div class="feat"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l3 7 7 .5-5.5 4.5L18 21l-6-4-6 4 1.5-7L2 9.5 9 9z"/></svg></div><h3>3-lesson package — $270</h3><p>$90 each. Enough time to lock in a change and see it hold.</p></div>
+        <div class="feat"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l3 7 7 .5-5.5 4.5L18 21l-6-4-6 4 1.5-7L2 9.5 9 9z"/></svg></div><h3>5-lesson package — $425</h3><p>$85 each. A full progression from fundamentals to on-course feel.</p></div>
+        <div class="feat"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l3 7 7 .5-5.5 4.5L18 21l-6-4-6 4 1.5-7L2 9.5 9 9z"/></svg></div><h3>7-lesson package — $560</h3><p>$80 each — the best per-lesson value for committed improvement.</p></div>
+        <div class="feat"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><h3>Families &amp; groups</h3><p>Bring the whole family. Packages can be shared across members.</p></div>
+        <div class="feat"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l3 7 7 .5-5.5 4.5L18 21l-6-4-6 4 1.5-7L2 9.5 9 9z"/></svg></div><h3>High school team</h3><p>Jeff works with the local high school team — ask about team rates.</p></div>
+      </div>
+      <div class="reveal" style="margin-top:2.6rem">
+        <a class="btn btn-brass" href="/pricing">See Full Pricing</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOK CTA -->
+  <section class="section">
+    <div class="wrap reveal" style="text-align:center">
+      <span class="eyebrow" style="justify-content:center">Schedule Your Coaching</span>
+      <h2 style="margin:0 auto">Call Jeff directly to book</h2>
+      <p class="intro" style="margin:1.1rem auto 2rem">Reserve a single lesson or a package over the phone — Jeff will help you pick the right starting point.</p>
+      <div class="hero-actions" style="justify-content:center">
+        <a class="btn btn-brass btn-lg" href={site.phoneHref}>Call {site.phone}</a>
+        <a class="btn btn-dark btn-lg" href={`mailto:${site.email}`}>Email Us</a>
+      </div>
     </div>
   </section>
 </Layout>

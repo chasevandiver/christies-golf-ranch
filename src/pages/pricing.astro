@@ -1,5 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Photo from '../components/Photo.astro';
+import { site } from '../config/site';
 const title = "Pricing — Christie's Golf Ranch | Range, Memberships, Lessons & Camp";
 const description = "Posted pricing at Christie's Golf Ranch in Pilot Point, TX: range buckets, monthly memberships, private lessons with Jeff Christie, and junior camp. No surprises.";
 ---
@@ -11,10 +13,103 @@ const description = "Posted pricing at Christie's Golf Ranch in Pilot Point, TX:
       <p class="lede">Posted rates, no surprises — range buckets, memberships, instruction, and junior camp all in one place.</p>
     </div>
   </section>
+
   <section class="section">
     <div class="wrap">
-      <p class="stub-note">Full rate sheet coming next — building the Home page first for review. The complete pricing from the approved design will live here.</p>
-      <div style="margin-top:1.8rem"><a class="btn btn-brass" href="/">Back to Home</a></div>
+      <div class="reveal">
+        <span class="eyebrow">Membership &amp; Rates</span>
+        <h2>Everything you need to know before you come out</h2>
+        <p class="intro">No membership required to walk up and hit balls — but for regulars, it pays off fast. Everything below is current.</p>
+      </div>
+
+      <!-- RANGE -->
+      <div class="price-band reveal">
+        <div class="band-head"><h3>At the range</h3><span class="note">Open daily · 8am – dark</span></div>
+        <div class="pgrid c2">
+          <div class="pcard"><h4>Small bucket</h4><div class="amt">$17</div><p class="desc">75 balls — a focused warm-up or a quick evening session.</p></div>
+          <div class="pcard"><h4>Large bucket</h4><div class="amt">$25</div><p class="desc">150 balls — settle in and groove the swing.</p></div>
+        </div>
+      </div>
+
+      <!-- MEMBERSHIPS -->
+      <div class="price-band reveal">
+        <div class="band-head"><h3>Memberships</h3><span class="note">3-month minimum · unlimited range balls</span></div>
+        <div class="pgrid c2">
+          <div class="pcard">
+            <h4>Practice Membership</h4>
+            <div class="amt">$90<span> / month</span></div>
+            <ul>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Unlimited use of the practice facility</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Unlimited range balls</li>
+            </ul>
+            <!-- Phase 2: replace with Clover Hosted Checkout button. -->
+            <div class="cta"><a class="btn btn-dark" href={site.phoneHref}>Inquire to Join</a></div>
+          </div>
+          <div class="pcard hi">
+            <span class="flag">Best value</span>
+            <h4>Practice + Monthly Lesson</h4>
+            <div class="amt">$130<span> / month</span></div>
+            <ul>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Unlimited practice &amp; range balls</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>One 30-minute lesson every month</li>
+            </ul>
+            <!-- Phase 2: replace with Clover Hosted Checkout button. -->
+            <div class="cta"><a class="btn btn-brass" href={site.phoneHref}>Inquire to Join</a></div>
+          </div>
+        </div>
+        <div style="margin-top:1.4rem"><a class="btn btn-dark" href="/memberships">More on memberships</a></div>
+      </div>
+
+      <!-- INSTRUCTION -->
+      <div class="price-band reveal">
+        <div class="band-head"><h3>Private instruction with Jeff Christie</h3><span class="note">Refine what works — don't rebuild it</span></div>
+        <div class="pgrid c2">
+          <div class="pcard">
+            <p class="desc" style="margin-top:0">Golf is a mental game, and Jeff coaches to enhance the skills you already have and build from there — for individuals, families, and the local high school team.</p>
+            <div style="margin-top:1.2rem">
+              <div class="tier"><span class="tn">Single hour</span><span class="tp">$95</span></div>
+              <div class="tier"><span class="tn">3-lesson package</span><span class="tp">$270</span></div>
+              <div class="tier"><span class="tn">5-lesson package</span><span class="tp">$425</span></div>
+              <div class="tier"><span class="tn">7-lesson package</span><span class="tp">$560</span></div>
+            </div>
+            <div style="margin-top:1.4rem"><a class="btn btn-dark" href="/instruction">About the coaching</a></div>
+          </div>
+          <div class="pcard hi" style="justify-content:center;text-align:center;align-items:center">
+            <h4>Schedule your coaching</h4>
+            <p class="desc">Call Jeff directly to book a lesson or a package.</p>
+            <div class="cta"><a class="btn btn-brass btn-lg" href={site.phoneHref}>Call {site.phone}</a></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- JUNIOR CAMP -->
+      <div class="price-band reveal">
+        <div class="band-head"><h3>Junior camp</h3><span class="note">Ages 8–12 · 4-day camps · 2 hours daily</span></div>
+        <div class="pgrid c2">
+          <div class="pcard">
+            <h4>Summer junior camp</h4>
+            <p class="desc">A proper foundation — etiquette, the rules of golf, grip, posture, and full-swing fundamentals — taught in small groups with plenty of reps.</p>
+            <ul>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Small groups, real instruction</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Etiquette, rules &amp; swing basics</li>
+            </ul>
+            <!-- DRAFT: confirm 2026 camp dates and price with Chase before launch. -->
+            <div class="cta"><a class="btn btn-brass" href={site.links.juniorCampForm} target="_blank" rel="noopener">Register for 2026</a></div>
+          </div>
+          <Photo marker="juniors on the range" tag="juniors on the range" scene="dawn" />
+        </div>
+      </div>
+
+      <!-- PLAY DAY -->
+      <div class="price-band reveal">
+        <div class="band-head"><h3>Monthly Play Day</h3><span class="note">Last Friday of every month · no tee times</span></div>
+        <div class="pgrid c2">
+          <div class="pcard"><h4>Par-3 Play Day</h4><div class="amt">$25<span> / golfer</span></div><p class="desc">Unlimited golf on the nine-hole par-3 course — real greens, real slopes. Just ride up and play.</p></div>
+          <div class="pcard"><h4>Clinics, events &amp; parties</h4><p class="desc" style="margin-top:0">Group clinics, special events, and birthday parties are available too. Call for pricing and to reserve a date.</p><div class="cta"><a class="btn btn-dark" href={site.phoneHref}>Call {site.phone}</a></div></div>
+        </div>
+      </div>
+
+      <p class="editnote reveal">Pricing is confirmed from the current rate sheet. Rates may change seasonally — call <a href={site.phoneHref} style="color:var(--leather);font-weight:800">{site.phone}</a> if you have any questions.</p>
     </div>
   </section>
 </Layout>
