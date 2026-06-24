@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Christie's Golf Ranch — The Premier All-Grass Driving Range in North Texas</title>
+<meta name="description" content="North Texas's premier all-grass golf ranch — a 55-station driving range and 9-hole par-3 course on 15 acres of Pilot Point horse country. Instruction, memberships, junior camps. Open every day.">
+<meta name="theme-color" content="#3A291B">
+
+<meta property="og:title" content="Christie's Golf Ranch">
+<meta property="og:description" content="The premier all-grass golf ranch in North Texas — driving range & 9-hole par-3 course.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://christiesgolfranch.com/">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,500;0,600;0,700;0,800;1,500&family=Mulish:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"GolfCourse",
+  "name":"Christie's Golf Ranch",
+  "description":"The premier all-grass golf ranch in North Texas — a driving range and 9-hole par-3 golf course.",
+  "url":"https://christiesgolfranch.com/","telephone":"+1-214-317-1488","email":"christiesgolfranch@gmail.com",
+  "address":{"@type":"PostalAddress","streetAddress":"920 US Highway 377","addressLocality":"Pilot Point","addressRegion":"TX","postalCode":"76258","addressCountry":"US"},
+  "openingHours":"Mo-Su 08:00-19:00","priceRange":"$$",
+  "sameAs":["https://www.facebook.com/1419209578311681","https://www.instagram.com/christiesgolfranch","https://www.yelp.com/biz/GSfhPbVG0eBEn4cgxnV5pg"]
+}
+</script>
+
+<style>
+  :root{
+    --canvas:#EAE0CB;       /* warm canvas ground */
+    --canvas-2:#E2D6BB;     /* deeper canvas */
+    --card:#F5EEDC;         /* warm light card */
+    --leather:#3A291B;      /* primary dark — saddle/espresso */
+    --leather-deep:#271A10; /* deepest */
+    --leather-soft:#4C3826; /* raised dark surface */
+    --range-green:#44542F;  /* deep ranch/golf green accent */
+    --brass:#B0883F;        /* primary metal accent */
+    --brass-br:#D4B26C;     /* bright brass */
+    --brass-ink:#8A6526;    /* brass for small text on light */
+    --rust:#9C4F2A;         /* sparing warm accent */
+    --cream:#F1E8D4;        /* text on dark */
+    --cream-soft:#BEAF92;   /* muted on dark */
+    --ink:#332618;          /* text on light */
+    --ink-soft:#6B5B43;     /* muted on light */
+    --line-d:rgba(176,136,63,.32);
+    --line-l:#D2C2A0;
+
+    --display:"Bitter",Georgia,serif;
+    --body:"Mulish",system-ui,sans-serif;
+    --wrap:1180px; --r:5px;
+    --shadow:0 26px 64px -36px rgba(39,26,16,.7);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{margin:0;font-family:var(--body);color:var(--ink);background:var(--canvas);line-height:1.65;-webkit-font-smoothing:antialiased;position:relative}
+  /* faint canvas/leather grain */
+  body::before{content:"";position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.5;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E")}
+  h1,h2,h3,h4{font-family:var(--display);line-height:1.12;margin:0;letter-spacing:-.01em}
+  a{color:inherit}
+  img{max-width:100%;display:block}
+  .wrap{max-width:var(--wrap);margin:0 auto;padding:0 26px;position:relative;z-index:2}
+  .eyebrow{font-family:var(--body);font-weight:800;font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;color:var(--brass-ink);display:inline-flex;align-items:center;gap:.7rem;margin-bottom:1rem}
+  .eyebrow::before{content:"";width:26px;height:2px;background:var(--brass)}
+  .on-dark .eyebrow{color:var(--brass-br)}
+
+  .btn{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--body);font-weight:800;font-size:.86rem;letter-spacing:.06em;text-transform:uppercase;padding:.95rem 1.7rem;border-radius:var(--r);border:1.5px solid transparent;cursor:pointer;text-decoration:none;transition:transform .15s,background .2s,color .2s,border-color .2s;line-height:1}
+  .btn:active{transform:translateY(1px)}
+  .btn-brass{background:var(--brass);color:var(--leather-deep)}
+  .btn-brass:hover{background:var(--brass-br)}
+  .btn-outline{background:transparent;color:var(--cream);border-color:rgba(241,232,212,.4)}
+  .btn-outline:hover{border-color:var(--brass-br);color:var(--brass-br)}
+  .btn-dark{background:var(--leather);color:var(--cream)}
+  .btn-dark:hover{background:var(--leather-soft)}
+  .btn-lg{padding:1.05rem 2rem;font-size:.92rem}
+
+  .ribbon{background:var(--leather-deep);color:var(--cream-soft);text-align:center;font-size:.8rem;font-weight:600;letter-spacing:.05em;padding:.6rem 16px;position:relative;z-index:3}
+  .ribbon b{color:var(--brass-br);font-weight:800}
+  .ribbon .dot{color:var(--brass);margin:0 .55rem}
+
+  header{position:sticky;top:0;z-index:60;background:rgba(58,41,27,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line-d)}
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;height:80px}
+  .brand{display:flex;align-items:center;gap:.8rem;text-decoration:none;flex:none}
+  .brand .mark{width:46px;height:46px;flex:none}
+  .brand .name{font-family:var(--display);font-weight:700;font-size:1.14rem;color:var(--cream);line-height:1.05}
+  .brand .name small{display:block;font-family:var(--body);font-weight:800;font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;color:var(--brass-br);margin-top:4px}
+  .links{display:flex;align-items:center;gap:1.7rem;list-style:none;margin:0;padding:0}
+  .links a{text-decoration:none;font-weight:700;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--cream-soft);transition:color .2s}
+  .links a:hover{color:var(--brass-br)}
+  .nav-right{display:flex;align-items:center;gap:1.1rem}
+  .navphone{display:inline-flex;align-items:center;gap:.45rem;color:var(--cream);text-decoration:none;font-weight:800;font-size:.9rem;white-space:nowrap}
+  .navphone svg{width:16px;height:16px;color:var(--brass-br)}
+  .menu-btn{display:none;background:none;border:none;cursor:pointer;color:var(--cream);padding:6px}
+  .menu-btn svg{width:28px;height:28px}
+  .drawer{display:none;background:var(--leather);border-bottom:1px solid var(--line-d);padding:1rem 26px 1.6rem}
+  .drawer.open{display:block}
+  .drawer ul{list-style:none;margin:0;padding:0}
+  .drawer a{display:block;padding:.9rem .2rem;text-decoration:none;font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:.82rem;color:var(--cream);border-bottom:1px solid var(--line-d)}
+  .drawer .btn{margin-top:1.1rem;width:100%;justify-content:center}
+
+  /* hero */
+  .hero{position:relative;background:var(--leather);color:var(--cream);overflow:hidden}
+  .hero-glow{position:absolute;width:820px;height:820px;right:-160px;top:-220px;border-radius:50%;background:radial-gradient(circle,rgba(212,178,108,.18),rgba(212,178,108,.05) 40%,transparent 66%);pointer-events:none;z-index:1}
+  .hero-fence{position:absolute;left:0;right:0;bottom:0;width:100%;height:120px;z-index:1;opacity:.6}
+  .hero-inner{position:relative;z-index:3;max-width:var(--wrap);margin:0 auto;padding:clamp(3.5rem,7vw,6rem) 26px clamp(5rem,9vw,8rem);display:grid;grid-template-columns:1.4fr .6fr;gap:2rem;align-items:center}
+  .hero .kicker{font-family:var(--body);font-weight:800;font-size:.76rem;letter-spacing:.24em;text-transform:uppercase;color:var(--brass-br);display:flex;align-items:center;gap:.8rem;margin-bottom:1.5rem}
+  .hero .kicker::before{content:"";width:34px;height:1px;background:var(--brass)}
+  .hero h1{font-size:clamp(2.7rem,6.2vw,4.9rem);font-weight:800;max-width:14ch;letter-spacing:-.02em;color:var(--cream)}
+  .hero h1 em{font-style:italic;color:var(--brass-br);font-weight:700}
+  .hero .lede{font-size:clamp(1.06rem,1.9vw,1.28rem);max-width:44ch;margin:1.5rem 0 2.1rem;color:var(--cream-soft);font-weight:500}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:1rem}
+  .hero-seal{display:flex;justify-content:center}
+  .hero-seal svg{width:100%;max-width:240px;height:auto;filter:drop-shadow(0 8px 20px rgba(0,0,0,.4))}
+  .hero-stats{position:relative;z-index:3;max-width:var(--wrap);margin:0 auto;padding:0 26px clamp(3rem,6vw,4.5rem);display:flex;flex-wrap:wrap;gap:0}
+  .hero-stats .stat{padding:0 2.4rem;border-right:1px solid var(--line-d)}
+  .hero-stats .stat:first-child{padding-left:0}
+  .hero-stats .stat:last-child{border-right:none}
+  .hero-stats .num{font-family:var(--display);font-weight:800;font-size:2.2rem;color:var(--brass-br);line-height:1}
+  .hero-stats .lbl{font-size:.72rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--cream-soft);margin-top:.5rem}
+
+  .section{padding:clamp(4rem,8vw,7rem) 0;position:relative;z-index:2}
+  .section h2{font-size:clamp(2rem,4.2vw,3rem);font-weight:700;max-width:20ch}
+  .on-dark{background:var(--leather);color:var(--cream)}
+  .on-dark h2{color:var(--cream)}
+  .on-dark .intro{color:var(--cream-soft)}
+  .intro{font-size:1.1rem;color:var(--ink-soft);max-width:56ch;margin-top:1.1rem}
+
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2.5rem,6vw,5rem);align-items:center}
+  .about-copy p{color:var(--ink-soft);font-size:1.07rem;margin:1.1rem 0 0}
+  .about-copy .sig{font-family:var(--display);font-style:italic;font-weight:500;font-size:1.2rem;color:var(--leather);margin-top:1.6rem;padding-left:1.2rem;border-left:3px solid var(--brass)}
+
+  .photo{position:relative;border-radius:var(--r);overflow:hidden;min-height:440px;display:flex;align-items:flex-end;background:linear-gradient(155deg,#4C3826,#271A10);box-shadow:var(--shadow);border:1px solid var(--line-d)}
+  .photo .scene{position:absolute;inset:0;width:100%;height:100%;opacity:.85}
+  .photo .tag{position:relative;z-index:2;margin:1.1rem;font-family:var(--body);font-size:.72rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--cream);background:rgba(39,26,16,.66);border:1px solid var(--line-d);padding:.5rem .85rem;border-radius:4px;backdrop-filter:blur(3px)}
+  .photo .tag b{color:var(--brass-br)}
+
+  .feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:2.8rem;border-top:1px solid var(--line-d)}
+  .feat{padding:1.9rem 1.6rem;border-bottom:1px solid var(--line-d);border-right:1px solid var(--line-d)}
+  .feat:nth-child(3n){border-right:none}
+  .feat:nth-child(3n+1){padding-left:0}
+  .feat .ic{color:var(--brass-br);margin-bottom:1rem}
+  .feat .ic svg{width:26px;height:26px}
+  .feat h3{font-size:1.16rem;font-weight:700;color:var(--cream);margin-bottom:.4rem}
+  .feat p{font-size:.94rem;color:var(--cream-soft);margin:0}
+
+  .price-band{margin-top:3rem}
+  .band-head{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;flex-wrap:wrap;padding-bottom:1rem;margin-bottom:1.5rem;border-bottom:2px solid var(--line-l)}
+  .band-head h3{font-size:1.65rem;font-weight:700}
+  .band-head .note{font-size:.78rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--brass-ink)}
+  .pgrid{display:grid;gap:1.2rem}
+  .c2{grid-template-columns:repeat(auto-fit,minmax(270px,1fr))}
+  .pcard{background:var(--card);border:1px solid var(--line-l);border-radius:var(--r);padding:1.8rem;display:flex;flex-direction:column;position:relative}
+  .pcard.hi{border-color:var(--brass);box-shadow:0 0 0 1px var(--brass)}
+  .pcard .flag{position:absolute;top:-12px;left:1.8rem;background:var(--brass);color:var(--leather-deep);font-family:var(--body);font-size:.64rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:.32rem .75rem;border-radius:3px}
+  .pcard h4{font-size:1.14rem;font-weight:700;margin-bottom:.6rem}
+  .pcard .amt{font-family:var(--display);font-weight:800;font-size:2.3rem;color:var(--ink);line-height:1}
+  .pcard .amt span{font-family:var(--body);font-size:.9rem;font-weight:700;color:var(--ink-soft)}
+  .pcard .desc{font-size:.96rem;color:var(--ink-soft);margin:.8rem 0 0}
+  .pcard ul{list-style:none;padding:0;margin:1rem 0 0;display:flex;flex-direction:column;gap:.55rem}
+  .pcard li{font-size:.94rem;display:flex;gap:.55rem;align-items:flex-start;color:var(--ink)}
+  .pcard li svg{width:15px;height:15px;color:var(--brass-ink);flex:none;margin-top:4px}
+  .pcard .cta{margin-top:1.4rem}
+  .tier{display:flex;justify-content:space-between;align-items:baseline;padding:.75rem 0;border-bottom:1px solid var(--line-l)}
+  .tier:last-child{border-bottom:none}
+  .tier .tn{font-weight:700;font-size:1rem}
+  .tier .tp{font-family:var(--display);font-weight:700;font-size:1.2rem;color:var(--ink)}
+  .editnote{font-size:.86rem;color:var(--ink-soft);border-left:3px solid var(--brass);padding:.3rem 0 .3rem 1rem;margin-top:1.8rem}
+
+  .playday .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:2.5rem}
+  .playday .copy{max-width:38rem}
+  .playday .price{flex:none;text-align:center;border:1px solid var(--line-d);border-radius:var(--r);padding:2rem 2.6rem;background:var(--leather-soft)}
+  .playday .price .big{font-family:var(--display);font-weight:800;font-size:3.4rem;color:var(--brass-br);line-height:1}
+  .playday .price .sub{font-size:.74rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--cream-soft);margin-top:.5rem}
+
+  .mission{text-align:center;background:var(--range-green)}
+  .mission .wrap{max-width:780px}
+  .mission blockquote{font-family:var(--display);font-style:italic;font-weight:500;font-size:clamp(1.4rem,3vw,2rem);line-height:1.42;margin:1.2rem 0;color:#F6F0DF}
+  .mission .verse{font-size:1rem;color:#CDD3B4;font-weight:600}
+  .mission cite{display:block;margin-top:1.6rem;font-style:normal;font-family:var(--body);font-weight:800;font-size:.76rem;letter-spacing:.16em;text-transform:uppercase;color:var(--brass-br)}
+  .mission .eyebrow{color:var(--brass-br)}
+
+  .gal{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:180px;gap:1rem;margin-top:2.8rem}
+  .gal .photo{min-height:0}
+  .tall{grid-row:span 2}
+  .wide{grid-column:span 2}
+
+  .quotes{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.4rem;margin-top:2.8rem}
+  .quote{background:var(--card);border:1px solid var(--line-l);border-radius:var(--r);padding:1.8rem}
+  .quote .stars{color:var(--brass);letter-spacing:3px;font-size:.92rem;margin-bottom:1rem}
+  .quote p{font-family:var(--display);font-style:italic;font-size:1.06rem;color:var(--ink);margin:0 0 1.1rem}
+  .quote .who{font-family:var(--body);font-weight:800;font-size:.76rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft)}
+
+  .visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:2.8rem;align-items:start}
+  .irow{display:flex;gap:1rem;padding:1.3rem 0;border-bottom:1px solid var(--line-d)}
+  .irow:first-child{padding-top:0}
+  .irow .ic{color:var(--brass-br);flex:none;margin-top:2px}
+  .irow .ic svg{width:22px;height:22px}
+  .irow h4{font-family:var(--body);font-weight:800;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--brass-br);margin-bottom:.4rem}
+  .irow p,.irow a{color:var(--cream);font-size:1.02rem;margin:0;text-decoration:none;font-weight:500}
+  .irow a:hover{color:var(--brass-br)}
+  .map-card{border-radius:var(--r);overflow:hidden;min-height:360px;border:1px solid var(--line-d);box-shadow:var(--shadow)}
+  .map-card iframe{width:100%;height:100%;min-height:360px;border:0;display:block;filter:sepia(.18) saturate(.9) brightness(.94)}
+
+  footer{background:var(--leather-deep);color:var(--cream-soft);padding:3rem 0 2.4rem;position:relative;z-index:2}
+  .foot{display:flex;flex-wrap:wrap;gap:1.6rem;justify-content:space-between;align-items:center}
+  .socials{display:flex;gap:.7rem}
+  .socials a{width:42px;height:42px;border-radius:50%;border:1px solid var(--line-d);display:flex;align-items:center;justify-content:center;color:var(--cream);transition:background .2s,color .2s}
+  .socials a:hover{background:var(--brass);color:var(--leather-deep);border-color:var(--brass)}
+  .socials svg{width:19px;height:19px}
+  .copyright{font-size:.82rem;color:#7C6E55;margin-top:1.8rem;padding-top:1.5rem;border-top:1px solid var(--line-d)}
+
+  .reveal{opacity:0;transform:translateY(20px);transition:opacity .8s ease,transform .8s ease}
+  .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+  a:focus-visible,.btn:focus-visible,button:focus-visible{outline:2px solid var(--brass-br);outline-offset:3px;border-radius:4px}
+
+  @media (max-width:920px){
+    .links,.navphone span{display:none}
+    .menu-btn{display:block}
+    .hero-inner{grid-template-columns:1fr}
+    .hero-seal{display:none}
+    .about-grid,.visit-grid{grid-template-columns:1fr}
+    .feat-grid{grid-template-columns:1fr 1fr}
+    .feat:nth-child(3n){border-right:1px solid var(--line-d)}
+    .feat:nth-child(2n){border-right:none}
+    .feat:nth-child(2n+1){padding-left:0}
+    .gal{grid-template-columns:repeat(2,1fr)}
+    .wide{grid-column:span 2}
+  }
+  @media (max-width:560px){
+    .hero-stats .stat{padding:0 1.4rem}
+    .hero-stats .stat:first-child{padding-left:0}
+    .feat-grid{grid-template-columns:1fr}
+    .feat{border-right:none!important;padding-left:0!important}
+    .gal{grid-auto-rows:140px}
+    .playday .price{width:100%}
+  }
+</style>
+</head>
+<body>
+
+<div class="ribbon">Monthly <b>Play Day</b> — last Friday of every month<span class="dot">·</span>unlimited par-3 golf, $25<span class="dot">·</span>no tee times</div>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top" aria-label="Christie's Golf Ranch home">
+      <!-- branding-iron seal (compact) -->
+      <svg class="mark" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+        <circle cx="50" cy="50" r="46" stroke="#B0883F" stroke-width="2.5"/>
+        <circle cx="50" cy="50" r="39" stroke="#B0883F" stroke-width="1"/>
+        <path d="M42 70V34" stroke="#D4B26C" stroke-width="3" stroke-linecap="round"/>
+        <path d="M42 34l18 6-18 6V34z" fill="#D4B26C"/>
+        <ellipse cx="50" cy="71" rx="16" ry="3" fill="#44542F"/>
+      </svg>
+      <span class="name">Christie's Golf Ranch<small>Pilot Point · Texas</small></span>
+    </a>
+    <ul class="links">
+      <li><a href="#range">The Ranch</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#lessons">Instruction</a></li>
+      <li><a href="#camps">Junior Camp</a></li>
+      <li><a href="#visit">Visit</a></li>
+    </ul>
+    <div class="nav-right">
+      <a class="navphone" href="tel:2143171488"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span>(214) 317-1488</span></a>
+      <a class="btn btn-brass" href="#visit">Plan a Visit</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+    </div>
+  </div>
+  <div class="drawer" id="drawer">
+    <ul>
+      <li><a href="#range">The Ranch</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#lessons">Instruction</a></li>
+      <li><a href="#camps">Junior Camp</a></li>
+      <li><a href="#visit">Visit</a></li>
+    </ul>
+    <a class="btn btn-brass" href="tel:2143171488">Call (214) 317-1488</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-glow"></div>
+  <!-- fence line: ranch / horse country -->
+  <svg class="hero-fence" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
+    <g stroke="#1C120A" stroke-width="6">
+      <line x1="60" y1="40" x2="60" y2="120"/><line x1="220" y1="36" x2="220" y2="120"/>
+      <line x1="380" y1="40" x2="380" y2="120"/><line x1="540" y1="34" x2="540" y2="120"/>
+      <line x1="700" y1="40" x2="700" y2="120"/><line x1="860" y1="36" x2="860" y2="120"/>
+      <line x1="1020" y1="40" x2="1020" y2="120"/><line x1="1180" y1="34" x2="1180" y2="120"/>
+      <line x1="1340" y1="40" x2="1340" y2="120"/>
+    </g>
+    <g stroke="#1C120A" stroke-width="5">
+      <line x1="0" y1="60" x2="1440" y2="56"/><line x1="0" y1="84" x2="1440" y2="80"/>
+    </g>
+  </svg>
+  <div class="hero-inner">
+    <div>
+      <span class="kicker">Pilot Point, Texas · Est. 2008</span>
+      <h1>The premier all-grass golf ranch in <em>North Texas.</em></h1>
+      <p class="lede">A 55-station driving range and a 9-hole par-3 course spread across fifteen acres of open horse country — a serious place to practice, welcome to all, open every day.</p>
+      <div class="hero-actions">
+        <a class="btn btn-brass btn-lg" href="#pricing">View Pricing</a>
+        <a class="btn btn-outline btn-lg" href="#visit">Hours &amp; Directions</a>
+      </div>
+    </div>
+    <!-- BRANDING-IRON SEAL: the ranch signature -->
+    <div class="hero-seal">
+      <svg viewBox="0 0 220 220" fill="none" aria-label="Christie's Golf Ranch seal">
+        <circle cx="110" cy="110" r="104" stroke="#B0883F" stroke-width="2.5"/>
+        <circle cx="110" cy="110" r="94" stroke="#B0883F" stroke-width="1.2"/>
+        <circle cx="110" cy="110" r="70" stroke="#B0883F" stroke-width="1" stroke-dasharray="1 7"/>
+        <defs><path id="topArc" d="M38 110 A72 72 0 0 1 182 110"/></defs>
+        <text fill="#D4B26C" font-family="Mulish, sans-serif" font-size="13" font-weight="800" letter-spacing="4" text-anchor="middle">
+          <textPath href="#topArc" startOffset="50%">PILOT POINT · TEXAS</textPath>
+        </text>
+        <!-- flag emblem -->
+        <path d="M96 132V78" stroke="#D4B26C" stroke-width="4" stroke-linecap="round"/>
+        <path d="M96 78l30 10-30 10V78z" fill="#D4B26C"/>
+        <ellipse cx="110" cy="133" rx="30" ry="5" fill="#44542F"/>
+        <circle cx="124" cy="129" r="3" fill="#F1E8D4"/>
+        <!-- name -->
+        <text x="110" y="160" fill="#F1E8D4" font-family="Bitter, serif" font-size="16" font-weight="800" letter-spacing="1" text-anchor="middle">CHRISTIE'S</text>
+        <text x="110" y="178" fill="#F1E8D4" font-family="Bitter, serif" font-size="13" font-weight="700" letter-spacing="2" text-anchor="middle">GOLF RANCH</text>
+        <line x1="74" y1="190" x2="92" y2="190" stroke="#B0883F" stroke-width="1.4"/>
+        <line x1="128" y1="190" x2="146" y2="190" stroke="#B0883F" stroke-width="1.4"/>
+        <text x="110" y="194" fill="#D4B26C" font-family="Mulish, sans-serif" font-size="9" font-weight="800" letter-spacing="3" text-anchor="middle">EST. 2008</text>
+      </svg>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat"><div class="num">55</div><div class="lbl">Grass Stations</div></div>
+    <div class="stat"><div class="num">9</div><div class="lbl">Hole Par-3</div></div>
+    <div class="stat"><div class="num">15</div><div class="lbl">Acres</div></div>
+    <div class="stat"><div class="num">Daily</div><div class="lbl">8am – Dark</div></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="wrap about-grid">
+    <div class="about-copy reveal">
+      <span class="eyebrow">The Ranch</span>
+      <h2>A first-class golf venue, built on family land</h2>
+      <p>Christie's Golf Ranch is a one-of-a-kind driving range and nine-hole par-3 course nestled in the heart of horse country in Pilot Point. It began as the life-long dream of golf enthusiast Jeff Christie, who bought the land in 2008 and built the venue in honor of his late father, Jim Christie.</p>
+      <p>Today it's a full-service, all-grass practice facility — fifty-five stations, a pro shop, professional instruction, memberships, and a junior camp — where individuals, groups, and families build real skills on well-kept grounds.</p>
+      <p class="sig">"There are not many people living out their dream. I am doing that." — Jeff Christie</p>
+    </div>
+    <div class="photo reveal" aria-label="Photo placeholder">
+      <svg class="scene" viewBox="0 0 600 480" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <rect width="600" height="480" fill="#4C3826"/>
+        <path d="M0 300 C150 280 320 320 460 300 C540 290 600 300 600 298 L600 480 L0 480Z" fill="#3E4A2B"/>
+        <path d="M0 360 C200 344 400 380 600 358 L600 480 L0 480Z" fill="#44542F"/>
+        <g stroke="#2A1D12" stroke-width="4"><line x1="60" y1="320" x2="60" y2="380"/><line x1="180" y1="316" x2="180" y2="380"/><line x1="300" y1="320" x2="300" y2="382"/><line x1="40" y1="338" x2="320" y2="334"/></g>
+        <circle cx="470" cy="120" r="46" fill="#D9B878" opacity=".8"/>
+      </svg>
+      <span class="tag"><b>Add photo:</b> the range at first light</span>
+    </div>
+  </div>
+</section>
+
+<!-- FACILITY -->
+<section class="section on-dark" id="range">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow">The Facility</span>
+      <h2>Every part of the game, on real Texas grass</h2>
+      <p class="intro">Fifteen acres purpose-built for practice — from the long ball to the short game, everything that holds up on the course.</p>
+    </div>
+    <div class="feat-grid reveal">
+      <div class="feat"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2v13"/><path d="M12 2l7 2.5L12 7"/><ellipse cx="12" cy="19" rx="7" ry="2.5"/></svg></div><h3>55 grass stations</h3><p>A full-service, all-grass range — never off a mat. Buckets from 75 to 150 balls.</p></div>
+      <div class="feat"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18M3 12h18"/></svg></div><h3>9-hole par-3 course</h3><p>Greens with genuine slope and pin variety. Open for events and monthly Play Days.</p></div>
+      <div class="feat"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 18c0-4 3-7 7-7s7 3 7 7"/><path d="M3 18h18"/><circle cx="12" cy="8" r="2"/></svg></div><h3>Chipping &amp; putting greens</h3><p>Dedicated short-game areas to sharpen the shots that actually lower scores.</p></div>
+      <div class="feat"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 16c4-6 8 4 12-2s6 2 8-2"/><path d="M2 20h20"/></svg></div><h3>Bunkers &amp; water</h3><p>Practice from the sand and around the water, so nothing surprises you in a round.</p></div>
+      <div class="feat"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l3 7 7 .5-5.5 4.5L18 21l-6-4-6 4 1.5-7L2 9.5 9 9z"/></svg></div><h3>Three 60+ yard holes</h3><p>Real practice holes bridging the gap between the range and the course.</p></div>
+      <div class="feat"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 9l9-6 9 6v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/><path d="M9 21v-6h6v6"/></svg></div><h3>Pro shop</h3><p>What you need on the way in — plus details on clinics, events, and parties.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="section" id="pricing">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow">Membership &amp; Rates</span>
+      <h2>Posted pricing, no surprises</h2>
+      <p class="intro">No membership required to walk up and hit balls — but for regulars, it pays off fast. Everything below is current.</p>
+    </div>
+
+    <div class="price-band reveal">
+      <div class="band-head"><h3>At the range</h3><span class="note">Open daily · 8am – dark</span></div>
+      <div class="pgrid c2">
+        <div class="pcard"><h4>Small bucket</h4><div class="amt">$17</div><p class="desc">75 balls — a focused warm-up or a quick evening session.</p></div>
+        <div class="pcard"><h4>Large bucket</h4><div class="amt">$25</div><p class="desc">150 balls — settle in and groove the swing.</p></div>
+      </div>
+    </div>
+
+    <div class="price-band reveal">
+      <div class="band-head"><h3>Memberships</h3><span class="note">3-month minimum · unlimited range balls</span></div>
+      <div class="pgrid c2">
+        <div class="pcard">
+          <h4>Practice Membership</h4>
+          <div class="amt">$90<span> / month</span></div>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Unlimited use of the practice facility</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Unlimited range balls</li>
+          </ul>
+          <div class="cta"><a class="btn btn-dark" href="tel:2143171488">Inquire to Join</a></div>
+        </div>
+        <div class="pcard hi">
+          <span class="flag">Best value</span>
+          <h4>Practice + Monthly Lesson</h4>
+          <div class="amt">$130<span> / month</span></div>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Unlimited practice &amp; range balls</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>One 30-minute lesson every month</li>
+          </ul>
+          <div class="cta"><a class="btn btn-brass" href="tel:2143171488">Inquire to Join</a></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="price-band reveal" id="lessons">
+      <div class="band-head"><h3>Private instruction with Jeff Christie</h3><span class="note">Refine what works — don't rebuild it</span></div>
+      <div class="pgrid c2">
+        <div class="pcard">
+          <p class="desc" style="margin-top:0">Golf is a mental game, and Jeff coaches to enhance the skills you already have and build from there — for individuals, families, and the local high school team.</p>
+          <div style="margin-top:1.2rem">
+            <div class="tier"><span class="tn">Single hour</span><span class="tp">$95</span></div>
+            <div class="tier"><span class="tn">3-lesson package</span><span class="tp">$270</span></div>
+            <div class="tier"><span class="tn">5-lesson package</span><span class="tp">$425</span></div>
+            <div class="tier"><span class="tn">7-lesson package</span><span class="tp">$560</span></div>
+          </div>
+        </div>
+        <div class="pcard hi" style="justify-content:center;text-align:center;align-items:center">
+          <h4>Schedule your coaching</h4>
+          <p class="desc">Call Jeff directly to book a lesson or a package.</p>
+          <div class="cta"><a class="btn btn-brass btn-lg" href="tel:2143171488">Call (214) 317-1488</a></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="price-band reveal" id="camps">
+      <div class="band-head"><h3>Junior camp</h3><span class="note">Ages 8–12 · 4-day camps · 2 hours daily</span></div>
+      <div class="pgrid c2">
+        <div class="pcard">
+          <h4>Summer junior camp</h4>
+          <p class="desc">A proper foundation — etiquette, the rules of golf, grip, posture, and full-swing fundamentals — taught in small groups with plenty of reps.</p>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Small groups, real instruction</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Etiquette, rules &amp; swing basics</li>
+          </ul>
+          <div class="cta"><a class="btn btn-brass" href="https://docs.google.com/forms/d/1ZBeZ7lZ-l9Z81URQeMBAvZqUVKW-TpYJ_AMKosipxIg" target="_blank" rel="noopener">Register for 2026</a></div>
+        </div>
+        <div class="photo" aria-label="Photo placeholder">
+          <svg class="scene" viewBox="0 0 600 480" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <rect width="600" height="480" fill="#4C3826"/>
+            <path d="M0 340 C200 322 400 360 600 338 L600 480 L0 480Z" fill="#44542F"/>
+            <circle cx="120" cy="110" r="40" fill="#D9B878" opacity=".8"/>
+          </svg>
+          <span class="tag"><b>Add photo:</b> juniors on the range</span>
+        </div>
+      </div>
+    </div>
+
+    <p class="editnote reveal">Also available: clinics, special events, and birthday parties. Call <a href="tel:2143171488" style="color:var(--leather);font-weight:800">(214) 317-1488</a> for pricing.</p>
+  </div>
+</section>
+
+<!-- PLAY DAY -->
+<section class="section on-dark playday">
+  <div class="wrap">
+    <div class="copy reveal">
+      <span class="eyebrow">Last Friday, every month</span>
+      <h2>Monthly Play Day on the par-3</h2>
+      <p class="intro">Unlimited golf on the nine-hole, par-3 course — real greens, real slopes, no tee times. Just ride up and play. The course opens for events like this; the range is open daily.</p>
+    </div>
+    <div class="price reveal"><div class="big">$25</div><div class="sub">Unlimited play · per golfer</div></div>
+  </div>
+</section>
+
+<!-- MISSION -->
+<section class="section mission">
+  <div class="wrap reveal">
+    <span class="eyebrow">Our Purpose</span>
+    <blockquote>"My mission is to teach young men and women self-worth through Jesus Christ — living it every day by giving God the glory and welcoming those He puts in front of me."</blockquote>
+    <p class="verse">"Commit your works to the Lord, and your plans will be established." — Proverbs 16:3</p>
+    <cite>Jeff Christie · Founder</cite>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="section" id="gallery">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow">The Grounds</span>
+      <h2>A look around the ranch</h2>
+      <p class="intro">These slots are sized and framed for your own photography — drop the real images in and the page fills out.</p>
+    </div>
+    <div class="gal reveal">
+      <div class="photo tall"><svg class="scene" viewBox="0 0 300 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="300" height="400" fill="#4C3826"/><path d="M0 260 C100 244 200 280 300 258 L300 400 L0 400Z" fill="#44542F"/><line x1="210" y1="300" x2="210" y2="232" stroke="#D4B26C" stroke-width="4"/><path d="M210 232l22 8-22 8z" fill="#D4B26C"/></svg><span class="tag"><b>Add:</b> par-3 green</span></div>
+      <div class="photo"><svg class="scene" viewBox="0 0 300 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="300" height="200" fill="#4C3826"/><circle cx="60" cy="56" r="28" fill="#D9B878" opacity=".8"/></svg><span class="tag"><b>Add:</b> dawn tee box</span></div>
+      <div class="photo wide"><svg class="scene" viewBox="0 0 600 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="600" height="200" fill="#4C3826"/><path d="M0 130 C200 112 400 150 600 128 L600 200 L0 200Z" fill="#44542F"/><g stroke="#2A1D12" stroke-width="3"><line x1="80" y1="120" x2="80" y2="160"/><line x1="200" y1="118" x2="200" y2="160"/><line x1="60" y1="134" x2="220" y2="132"/></g></svg><span class="tag"><b>Add:</b> wide range view</span></div>
+      <div class="photo"><svg class="scene" viewBox="0 0 300 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="300" height="200" fill="#4C3826"/><path d="M0 140 C100 126 200 156 300 138 L300 200 L0 200Z" fill="#44542F"/></svg><span class="tag"><b>Add:</b> pro shop</span></div>
+      <div class="photo wide"><svg class="scene" viewBox="0 0 600 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="600" height="200" fill="#4C3826"/><path d="M0 120 C240 102 360 150 600 124 L600 200 L0 200Z" fill="#44542F"/></svg><span class="tag"><b>Add:</b> lesson in progress</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section on-dark" id="reviews">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow">From Our Golfers</span>
+      <h2>What members and visitors say</h2>
+    </div>
+    <div class="quotes reveal">
+      <div class="quote"><div class="stars">★★★★★</div><p>"Paste Randy's actual review wording here."</p><span class="who">Randy</span></div>
+      <div class="quote"><div class="stars">★★★★★</div><p>"Paste Chuck's actual review wording here."</p><span class="who">Chuck</span></div>
+      <div class="quote"><div class="stars">★★★★★</div><p>"Paste Husker's actual review wording here."</p><span class="who">Husker</span></div>
+    </div>
+    <p class="editnote reveal" style="color:var(--cream-soft);border-color:var(--brass)">Your current site lists these names but the quote text came through garbled. Drop in the real wording, or pull your strongest recent Google reviews. Genuine reviews only.</p>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section class="section on-dark" id="visit" style="background:var(--leather-soft)">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow">Visit</span>
+      <h2>Ride out and see the ranch</h2>
+    </div>
+    <div class="visit-grid">
+      <div class="reveal">
+        <div class="irow"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><h4>Location</h4><p>920 US Highway 377<br>Pilot Point, Texas 76258</p></div></div>
+        <div class="irow"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 16 14"/></svg></div><div><h4>Hours</h4><p>Driving range — every day, 8am till dark<br>Par-3 course — special events &amp; Play Days</p></div></div>
+        <div class="irow"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div><div><h4>Call</h4><p><a href="tel:2143171488">(214) 317-1488</a></p></div></div>
+        <div class="irow"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16v16H4z"/><polyline points="22 6 12 13 2 6"/></svg></div><div><h4>Email</h4><p><a href="mailto:christiesgolfranch@gmail.com">christiesgolfranch@gmail.com</a></p></div></div>
+      </div>
+      <div class="map-card reveal">
+        <iframe title="Map to Christie's Golf Ranch" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=920%20US%20Highway%20377%2C%20Pilot%20Point%2C%20TX%2076258&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <a class="brand" href="#top" style="text-decoration:none">
+        <svg class="mark" viewBox="0 0 100 100" fill="none" aria-hidden="true"><circle cx="50" cy="50" r="46" stroke="#B0883F" stroke-width="2.5"/><circle cx="50" cy="50" r="39" stroke="#B0883F" stroke-width="1"/><path d="M42 70V34" stroke="#D4B26C" stroke-width="3" stroke-linecap="round"/><path d="M42 34l18 6-18 6V34z" fill="#D4B26C"/></svg>
+        <span class="name" style="color:var(--cream)">Christie's Golf Ranch</span>
+      </a>
+      <div class="socials">
+        <a href="https://www.facebook.com/1419209578311681" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+        <a href="https://www.instagram.com/christiesgolfranch" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg></a>
+        <a href="https://www.yelp.com/biz/GSfhPbVG0eBEn4cgxnV5pg" target="_blank" rel="noopener" aria-label="Yelp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11 3v9l-5-3a14 14 0 0 1 5-6zM5 13l5 1-4 4a12 12 0 0 1-1-5zm8 3l1 5a12 12 0 0 1-5-1zm3-1l5-1a12 12 0 0 1-2 4zm-1-4l4-4a13 13 0 0 1 1 5z"/></svg></a>
+      </div>
+    </div>
+    <p class="copyright">© 2026 Christie's Golf Ranch · 920 US Highway 377, Pilot Point, TX 76258 · (214) 317-1488 — All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  var btn=document.getElementById('menuBtn'), drawer=document.getElementById('drawer');
+  btn.addEventListener('click',function(){var o=drawer.classList.toggle('open');btn.setAttribute('aria-expanded',o);});
+  drawer.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){drawer.classList.remove('open');btn.setAttribute('aria-expanded',false);});});
+  if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});
+    document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+  }else{document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('in');});}
+</script>
+</body>
+</html>
