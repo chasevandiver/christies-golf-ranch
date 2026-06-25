@@ -50,13 +50,15 @@ export default async function HomePage() {
 
   const storyParas = c(m, "about.body").split(/\n{2,}/).filter(Boolean);
 
+  const siteUrl = "https://christiesgolfranch.com";
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "GolfCourse",
+    "@id": `${siteUrl}/#business`,
     name: "Christie's Golf Ranch",
     description:
       "An all-grass driving range and 9-hole par-3 golf course in Pilot Point, Texas.",
-    url: "https://christiesgolfranch.com/",
+    url: `${siteUrl}/`,
     telephone: "+1-" + phoneTel.replace(/(\d{3})(\d{3})(\d{4})/, "$1-$2-$3"),
     email,
     address: {
@@ -67,12 +69,23 @@ export default async function HomePage() {
       postalCode: "76258",
       addressCountry: "US",
     },
-    openingHours: "Mo-Su 08:00-19:00",
+    geo: { "@type": "GeoCoordinates", latitude: 33.3568, longitude: -96.9886 },
+    hasMap:
+      "https://www.google.com/maps/dir/?api=1&destination=920%20US%20Highway%20377%2C%20Pilot%20Point%2C%20TX%2076258",
+    openingHoursSpecification: {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      opens: "08:00",
+      closes: "20:00",
+    },
+    areaServed: ["Pilot Point", "Aubrey", "Denton", "Cross Roads", "Krugerville", "Tioga", "Little Elm"].map(
+      (name) => ({ "@type": "City", name })
+    ),
     priceRange: "$$",
     sameAs: [
       "https://www.facebook.com/1419209578311681",
       "https://www.instagram.com/christiesgolfranch",
-      "https://www.yelp.com/biz/christies-golf-ranch-pilot-point",
+      "https://www.yelp.com/biz/GSfhPbVG0eBEn4cgxnV5pg",
     ],
   };
 
@@ -80,9 +93,27 @@ export default async function HomePage() {
     .map((i) => ({ text: c(m, `review.${i}.text`), who: c(m, `review.${i}.who`) }))
     .filter((r) => r.text);
 
+  const faqs = [1, 2, 3, 4, 5]
+    .map((i) => ({ q: c(m, `faq.q${i}`), a: c(m, `faq.a${i}`) }))
+    .filter((f) => f.q && f.a);
+  const faqLd = faqs.length
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: faqs.map((f) => ({
+          "@type": "Question",
+          name: f.q,
+          acceptedAnswer: { "@type": "Answer", text: f.a },
+        })),
+      }
+    : null;
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      {faqLd ? (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
+      ) : null}
       <RevealInit />
 
       <div className="ribbon" dangerouslySetInnerHTML={{ __html: ribbonHtml(c(m, "ribbon.text")) }} />
@@ -246,12 +277,22 @@ export default async function HomePage() {
               <div className="pcard">
                 <p className="desc" style={{ marginTop: 0 }}>{c(m, "lessons.body")}</p>
                 <div style={{ marginTop: "1.2rem" }}>
-                  {[1, 2, 3, 4].map((i) => (
-                    <div className="tier" key={i}>
-                      <span className="tn">{c(m, `lessons.p${i}.name`)}</span>
-                      <span className="tp">{c(m, `lessons.p${i}.price`)}</span>
-                    </div>
-                  ))}
+                  {[1, 2, 3, 4].map((i) => {
+                    const checkout = c(m, `lessons.p${i}.checkout`);
+                    return (
+                      <div className="tier" key={i}>
+                        <span className="tn">{c(m, `lessons.p${i}.name`)}</span>
+                        <span className="tp">
+                          {c(m, `lessons.p${i}.price`)}
+                          {checkout ? (
+                            <a className="tier-book" href={checkout} target="_blank" rel="noopener">
+                              Book &amp; Pay →
+                            </a>
+                          ) : null}
+                        </span>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
               <div className="pcard hi" style={{ justifyContent: "center", textAlign: "center", alignItems: "center" }}>
@@ -364,6 +405,26 @@ export default async function HomePage() {
                   <p>{r.text}</p>
                   {r.who ? <span className="who">{r.who}</span> : null}
                 </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      ) : null}
+
+      {/* FAQ */}
+      {faqs.length ? (
+        <section className="section" id="faq">
+          <div className="wrap">
+            <div className="reveal">
+              <span className="eyebrow">{c(m, "faq.eyebrow", "Good to Know")}</span>
+              <h2>{c(m, "faq.heading", "Questions folks ask")}</h2>
+            </div>
+            <div className="faq-list reveal">
+              {faqs.map((f, i) => (
+                <details className="faq-item" key={i}>
+                  <summary>{f.q}</summary>
+                  <p>{f.a}</p>
+                </details>
               ))}
             </div>
           </div>

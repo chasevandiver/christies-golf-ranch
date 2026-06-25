@@ -139,7 +139,17 @@ header{position:sticky;top:0;z-index:60;background:rgba(58,41,27,.9);backdrop-fi
 .tier{display:flex;justify-content:space-between;align-items:baseline;padding:.75rem 0;border-bottom:1px solid var(--line-l)}
 .tier:last-child{border-bottom:none}
 .tier .tn{font-weight:700;font-size:1rem}
-.tier .tp{font-family:var(--display);font-weight:700;font-size:1.2rem;color:var(--ink)}
+.tier .tp{font-family:var(--display);font-weight:700;font-size:1.2rem;color:var(--ink);display:inline-flex;align-items:baseline;gap:.9rem}
+.tier-book{font-family:var(--body);font-size:.74rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--leather-deep);background:var(--brass);padding:.4rem .7rem;border-radius:4px;text-decoration:none;white-space:nowrap}
+.tier-book:hover{background:var(--brass-br)}
+
+.faq-list{margin-top:2.4rem;border-top:1px solid var(--line-l)}
+.faq-item{border-bottom:1px solid var(--line-l);padding:.4rem 0}
+.faq-item summary{font-family:var(--display);font-weight:700;font-size:1.16rem;color:var(--leather);cursor:pointer;list-style:none;padding:1rem 2rem 1rem 0;position:relative}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{content:"+";position:absolute;right:.3rem;top:.9rem;font-size:1.5rem;color:var(--brass-ink);font-family:var(--body)}
+.faq-item[open] summary::after{content:"–"}
+.faq-item p{margin:0 0 1.1rem;color:var(--ink-soft);font-size:1.05rem;max-width:64ch}
 .editnote{font-size:.86rem;color:var(--ink-soft);border-left:3px solid var(--brass);padding:.3rem 0 .3rem 1rem;margin-top:1.8rem}
 
 .playday .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:2.5rem}

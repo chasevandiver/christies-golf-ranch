@@ -104,13 +104,17 @@ export function expandEvents(rows: EventRow[], monthsAhead = 6): Occurrence[] {
 
 /** Fetch published events and return upcoming occurrences for the public site. */
 export async function getUpcomingEvents(limit = 8): Promise<Occurrence[]> {
-  const supabase = createClient();
-  const { data } = await supabase
-    .from("events")
-    .select("*")
-    .eq("is_published", true)
-    .order("sort");
-  return expandEvents((data ?? []) as EventRow[]).slice(0, limit);
+  try {
+    const supabase = createClient();
+    const { data } = await supabase
+      .from("events")
+      .select("*")
+      .eq("is_published", true)
+      .order("sort");
+    return expandEvents((data ?? []) as EventRow[]).slice(0, limit);
+  } catch {
+    return [];
+  }
 }
 
 const WEEKDAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];

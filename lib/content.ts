@@ -7,11 +7,16 @@ export type ContentMap = Record<string, string>;
  * Empty values fall back to whatever default the component passes to `c()`.
  */
 export async function getContent(): Promise<ContentMap> {
-  const supabase = createClient();
-  const { data } = await supabase.from("content_blocks").select("key,value");
   const map: ContentMap = {};
-  for (const row of data ?? []) {
-    if (row.value != null && row.value !== "") map[row.key] = row.value;
+  try {
+    const supabase = createClient();
+    const { data } = await supabase.from("content_blocks").select("key,value");
+    for (const row of data ?? []) {
+      if (row.value != null && row.value !== "") map[row.key] = row.value;
+    }
+  } catch {
+    // Backend unreachable / env not configured — fall back to component defaults
+    // rather than crashing the page.
   }
   return map;
 }
