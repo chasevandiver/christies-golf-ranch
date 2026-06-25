@@ -71,6 +71,26 @@ export const site = {
   },
 } as const;
 
+/**
+ * Lesson packages → Clover Payment Links (ticket 1.1).
+ *
+ * Paste each item's Clover Payment Link URL into `checkout`. Until a URL is
+ * filled in, that lesson's CTA falls back to the phone number (see
+ * `checkoutHref` below), so nothing ever links to a dead button. Clover handles
+ * all PCI — we only ever store/serve the hosted link, never card data.
+ */
+export const lessonPackages = [
+  { id: 'single', label: 'Single hour', price: '$95', note: 'One focused hour — best way to start.', checkout: '' },
+  { id: 'pack3', label: '3-lesson package', price: '$270', note: '$90 each — lock in a change.', checkout: '' },
+  { id: 'pack5', label: '5-lesson package', price: '$425', note: '$85 each — full progression.', checkout: '' },
+  { id: 'pack7', label: '7-lesson package', price: '$560', note: '$80 each — best per-lesson value.', checkout: '' },
+] as const;
+
+/** Resolve a lesson's CTA: its Clover link if set, otherwise call to book. */
+export function checkoutHref(pkg: { checkout: string }): string {
+  return pkg.checkout || site.phoneHref;
+}
+
 /** Primary navigation — rendered in the header and the mobile drawer. */
 export const nav: { label: string; href: string }[] = [
   { label: 'The Ranch', href: '/the-ranch' },

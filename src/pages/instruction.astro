@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Photo from '../components/Photo.astro';
-import { site } from '../config/site';
+import { site, lessonPackages, checkoutHref } from '../config/site';
 const title = "Golf Lessons in Pilot Point, TX — Private Instruction with Jeff Christie";
 const description = "Private golf lessons with Jeff Christie at Christie's Golf Ranch in Pilot Point, TX. Single hours and 3, 5, and 7-lesson packages for individuals, families, and teams.";
 ---
@@ -31,23 +31,43 @@ const description = "Private golf lessons with Jeff Christie at Christie's Golf 
     </div>
   </section>
 
-  <!-- PACKAGES -->
+  <!-- PACKAGES — book & pay online (ticket 1.1, Clover Payment Links) -->
   <section class="section on-dark">
     <div class="wrap">
       <div class="reveal">
-        <span class="eyebrow">Lesson Packages</span>
+        <span class="eyebrow">Book &amp; Pay Online</span>
         <h2>Single hours or save with a package</h2>
-        <p class="intro">Buy a single lesson to get started, or a package to keep momentum. Packages can be split across family members.</p>
+        <p class="intro">Pay securely online and we'll be in touch to set your time — or call Jeff directly, whichever you prefer. Packages can be split across family members.</p>
       </div>
-      <div class="feat-grid reveal">
-        <div class="feat"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 16 14"/></svg></div><h3>Single hour — $95</h3><p>One focused hour. The best way to get started or tune up before a round.</p></div>
-        <div class="feat"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l3 7 7 .5-5.5 4.5L18 21l-6-4-6 4 1.5-7L2 9.5 9 9z"/></svg></div><h3>3-lesson package — $270</h3><p>$90 each. Enough time to lock in a change and see it hold.</p></div>
-        <div class="feat"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l3 7 7 .5-5.5 4.5L18 21l-6-4-6 4 1.5-7L2 9.5 9 9z"/></svg></div><h3>5-lesson package — $425</h3><p>$85 each. A full progression from fundamentals to on-course feel.</p></div>
-        <div class="feat"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l3 7 7 .5-5.5 4.5L18 21l-6-4-6 4 1.5-7L2 9.5 9 9z"/></svg></div><h3>7-lesson package — $560</h3><p>$80 each — the best per-lesson value for committed improvement.</p></div>
-        <div class="feat"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><h3>Families &amp; groups</h3><p>Bring the whole family. Packages can be shared across members.</p></div>
-        <div class="feat"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l3 7 7 .5-5.5 4.5L18 21l-6-4-6 4 1.5-7L2 9.5 9 9z"/></svg></div><h3>High school team</h3><p>Jeff works with the local high school team — ask about team rates.</p></div>
+      <div class="pgrid c2 reveal" style="margin-top:2.6rem">
+        {lessonPackages.map((pkg) => {
+          const live = Boolean(pkg.checkout);
+          return (
+            <div class={`pcard${pkg.id === 'pack3' ? ' hi' : ''}`}>
+              {pkg.id === 'pack3' && <span class="flag">Popular</span>}
+              <h4>{pkg.label}</h4>
+              <div class="amt">{pkg.price}</div>
+              <p class="desc">{pkg.note}</p>
+              {/* Clover Payment Link when set; falls back to phone until then. */}
+              <div class="cta">
+                <a
+                  class={`btn ${pkg.id === 'pack3' ? 'btn-brass' : 'btn-dark'}`}
+                  href={checkoutHref(pkg)}
+                  data-cta="book-lesson"
+                  {...(live ? { target: '_blank', rel: 'noopener' } : {})}
+                >
+                  {live ? `Book & Pay · ${pkg.price}` : `Call to Book · ${site.phone}`}
+                </a>
+              </div>
+            </div>
+          );
+        })}
       </div>
-      <div class="reveal" style="margin-top:2.6rem">
+      <p class="editnote reveal" style="color:var(--cream-soft);border-color:var(--brass)">
+        Families &amp; groups and the local high school team are welcome — call
+        <a href={site.phoneHref} style="color:var(--brass-br);font-weight:800"> {site.phone}</a> about group and team rates.
+      </p>
+      <div class="reveal" style="margin-top:1.8rem">
         <a class="btn btn-brass" href="/pricing">See Full Pricing</a>
       </div>
     </div>
