@@ -117,7 +117,7 @@ export default function EventsManager({ events }: { events: EventRecord[] }) {
                   </td>
                   <td>
                     <div className="row-actions">
-                      <button className="linkbtn" style={{ color: "var(--leather)" }} onClick={() => setEditing(e)}>
+                      <button className="linkbtn" style={{ color: "var(--brand)" }} onClick={() => setEditing(e)}>
                         Edit
                       </button>
                       <button
@@ -270,7 +270,7 @@ function EventForm({
         <button className="btn-save" type="submit" disabled={busy}>
           {busy ? "Saving…" : "Save event"}
         </button>
-        <button type="button" className="linkbtn" style={{ color: "var(--leather)" }} onClick={onCancel}>
+        <button type="button" className="linkbtn" style={{ color: "var(--brand)" }} onClick={onCancel}>
           Cancel
         </button>
         {err ? <span className="saved-note" style={{ color: "var(--rust)" }}>{err}</span> : null}

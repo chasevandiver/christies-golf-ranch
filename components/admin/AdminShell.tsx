@@ -27,7 +27,7 @@ export default function AdminShell({
                 {t.label}
               </a>
             ))}
-            <a href="/" target="_blank" rel="noopener" style={{ color: "var(--brass-br)" }}>
+            <a href="/" target="_blank" rel="noopener" style={{ color: "var(--accent-bright)" }}>
               View Site ↗
             </a>
             <form action={signOutAction}>

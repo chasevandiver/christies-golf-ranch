@@ -67,7 +67,7 @@ export default function ContactsManager({ contacts }: { contacts: Contact[] }) {
           placeholder="Search by name, email, or phone"
           value={q}
           onChange={(e) => setQ(e.target.value)}
-          style={{ maxWidth: 340, padding: ".7rem 1rem", borderRadius: 8, border: "1.5px solid var(--line-l)", fontSize: "1rem" }}
+          style={{ maxWidth: 340, padding: ".7rem 1rem", borderRadius: 8, border: "1.5px solid var(--line)", fontSize: "1rem" }}
         />
         <button className="btn-save" onClick={download} disabled={contacts.length === 0}>
           Download list (CSV)
@@ -114,7 +114,7 @@ export default function ContactsManager({ contacts }: { contacts: Contact[] }) {
                   <div className="row-actions">
                     <button
                       className="linkbtn"
-                      style={{ color: "var(--leather)" }}
+                      style={{ color: "var(--brand)" }}
                       onClick={async () => {
                         await setUnsubscribed(c.id, !c.unsubscribed);
                         router.refresh();

@@ -33,11 +33,11 @@ export default function SiteHeader({
       <div className="wrap nav">
         <a className="brand" href="#top" aria-label="Christie's Golf Ranch home">
           <svg className="mark" viewBox="0 0 100 100" fill="none" aria-hidden="true">
-            <circle cx="50" cy="50" r="46" stroke="#B0883F" strokeWidth="2.5" />
-            <circle cx="50" cy="50" r="39" stroke="#B0883F" strokeWidth="1" />
-            <path d="M42 70V34" stroke="#D4B26C" strokeWidth="3" strokeLinecap="round" />
-            <path d="M42 34l18 6-18 6V34z" fill="#D4B26C" />
-            <ellipse cx="50" cy="71" rx="16" ry="3" fill="#44542F" />
+            <circle cx="50" cy="50" r="46" stroke="#C7913C" strokeWidth="2.5" />
+            <circle cx="50" cy="50" r="39" stroke="#C7913C" strokeWidth="1" />
+            <path d="M42 70V34" stroke="#DCAE58" strokeWidth="3" strokeLinecap="round" />
+            <path d="M42 34l18 6-18 6V34z" fill="#DCAE58" />
+            <ellipse cx="50" cy="71" rx="16" ry="3" fill="#517A57" />
           </svg>
           <span className="name">
             Christie&apos;s Golf Ranch<small>Pilot Point · Texas</small>

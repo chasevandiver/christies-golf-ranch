@@ -124,12 +124,12 @@ export default async function HomePage() {
       <section className={`hero${heroImg ? " has-photo" : ""}`} id="top" style={heroImg ? { backgroundImage: `url(${heroImg})` } : undefined}>
         <div className="hero-glow" />
         <svg className="hero-fence" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
-          <g stroke="#1C120A" strokeWidth="6">
+          <g stroke="#1B2B1F" strokeWidth="6">
             {[60, 220, 380, 540, 700, 860, 1020, 1180, 1340].map((x) => (
               <line key={x} x1={x} y1="38" x2={x} y2="120" />
             ))}
           </g>
-          <g stroke="#1C120A" strokeWidth="5">
+          <g stroke="#1B2B1F" strokeWidth="5">
             <line x1="0" y1="60" x2="1440" y2="56" />
             <line x1="0" y1="84" x2="1440" y2="80" />
           </g>
@@ -442,7 +442,7 @@ export default async function HomePage() {
       </section>
 
       {/* VISIT */}
-      <section className="section on-dark" id="visit" style={{ background: "var(--leather-soft)" }}>
+      <section className="section on-dark" id="visit" style={{ background: "var(--brand-soft)" }}>
         <div className="wrap">
           <div className="reveal">
             <span className="eyebrow">{c(m, "contact.eyebrow", "Visit")}</span>
@@ -527,10 +527,10 @@ export default async function HomePage() {
           <div className="foot">
             <a className="brand" href="#top" style={{ textDecoration: "none" }}>
               <svg className="mark" viewBox="0 0 100 100" fill="none" aria-hidden="true">
-                <circle cx="50" cy="50" r="46" stroke="#B0883F" strokeWidth="2.5" />
-                <circle cx="50" cy="50" r="39" stroke="#B0883F" strokeWidth="1" />
-                <path d="M42 70V34" stroke="#D4B26C" strokeWidth="3" strokeLinecap="round" />
-                <path d="M42 34l18 6-18 6V34z" fill="#D4B26C" />
+                <circle cx="50" cy="50" r="46" stroke="#C7913C" strokeWidth="2.5" />
+                <circle cx="50" cy="50" r="39" stroke="#C7913C" strokeWidth="1" />
+                <path d="M42 70V34" stroke="#DCAE58" strokeWidth="3" strokeLinecap="round" />
+                <path d="M42 34l18 6-18 6V34z" fill="#DCAE58" />
               </svg>
               <span className="name" style={{ color: "var(--cream)" }}>
                 Christie&apos;s Golf Ranch
