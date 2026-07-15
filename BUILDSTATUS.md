@@ -101,16 +101,26 @@ Meta Graph API · Resend
 
 ## Phase 4 — Native posting engine (headline build)
 
-- [ ] `posts` table (body, media_url, channels[], scheduled_at, status, result_log)
-- [ ] Compose screen (message + media + channel checkboxes + when)
-- [ ] Preview screen (renders FB / IG / email before sending)
-- [ ] Queue view (upcoming + sent; edit/cancel until it fires)
-- [ ] Vercel Cron → `/api/dispatch` (idempotent, no double-sends)
-- [!] Facebook + Instagram via Meta Graph API — **blocked on Meta app + long-lived Page
-      token + app review; IG must be a Business account linked to the Page. Start during
-      Phase 3.**
-- [ ] Email dispatch via Resend to subscribers
-- [ ] Retiree-simple UI pass (plain verbs, one decision/screen, preview-before-send)
+- [x] `posts` table (body, media_url, channels[], scheduled_at, status, result_log)
+      — migration `0006`, RLS admin-only
+- [x] Compose screen (message + media + channel checkboxes + when) — `/admin/posts/new`
+- [x] Preview screen (renders FB / IG / email before sending) — built into the composer;
+      nothing sends without passing through it
+- [x] Queue view (upcoming + sent; edit/cancel until it fires; failed posts show
+      per-channel errors and can be retried) — `/admin/posts`
+- [x] Cron → `/api/dispatch` (idempotent, no double-sends) — driven by Supabase pg_cron
+      (`dispatch-posts`, every 5 min) instead of Vercel Cron, which is daily-only on the
+      Hobby plan; posts are atomically claimed and per-channel results logged so retries
+      never re-send a channel that succeeded
+- [~] Facebook + Instagram via Meta Graph API — **code shipped** (`lib/social.ts`), lights
+      up when `META_PAGE_ID` / `META_PAGE_ACCESS_TOKEN` / `META_IG_USER_ID` land in Vercel;
+      **still blocked on Meta app + long-lived Page token + app review; IG must be a
+      Business account linked to the Page**
+- [~] Email dispatch via Resend to subscribers — **code shipped** (`lib/email.ts`, CAN-SPAM
+      footer + per-contact unsubscribe links via `/api/unsubscribe`); needs
+      `RESEND_API_KEY` / `RESEND_FROM` + verified sending domain
+- [x] Retiree-simple UI pass (numbered steps, plain verbs, preview-before-send; sidebar
+      admin with one section per page)
 
 **Done when:** staff schedule one post to all three channels in <1 min; it fires at the set
 time; scheduled posts are editable/cancelable.
