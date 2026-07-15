@@ -18,7 +18,25 @@ NEXT_PUBLIC_SUPABASE_URL=https://baodiunvfmmglvqfjzca.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJhb2RpdW52Zm1tZ2x2cWZqemNhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODIzNDQ5MDksImV4cCI6MjA5NzkyMDkwOX0.D5LVg4xAIydPXChQ91pfvej_Gc9Yr8SY2mSNLOq0l58
 NEXT_PUBLIC_SITE_URL=https://christiesgolfranch.com
 ```
-(The anon key is public by design — safe to expose. No service-role key is used.)
+(The anon key is public by design — safe to expose.)
+
+**For the posting engine** (Social & Email Posts in the admin), also add:
+
+```
+SUPABASE_SERVICE_ROLE_KEY=   ← Supabase dashboard → Settings → API → service_role
+CRON_SECRET=75636dc7c232f34fa6454764e5ee007b42a665e382a9a8d2
+RESEND_API_KEY=              ← resend.com, after verifying the sending domain
+RESEND_FROM=Christie's Golf Ranch <hello@christiesgolfranch.com>
+META_PAGE_ID=                ← when the Meta app is approved
+META_PAGE_ACCESS_TOKEN=      ← long-lived Page token
+META_IG_USER_ID=             ← IG Business account linked to the Page
+```
+
+The `CRON_SECRET` value above must stay in sync with the Supabase pg_cron job
+`dispatch-posts`, which calls `/api/dispatch` every 5 minutes. Channels whose
+keys are missing fail gracefully with a "not connected yet" note in the post's
+send report — email and Meta can be lit up independently, whenever their
+credentials arrive.
 
 ### 2. Create the two admin logins
 Supabase Dashboard → **Authentication → Users → Add user** (create with a password,

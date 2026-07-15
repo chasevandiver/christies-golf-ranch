@@ -98,3 +98,112 @@ export async function setUnsubscribed(id: string, unsubscribed: boolean) {
   revalidatePath("/admin/contacts");
   return { ok: true, message: "Updated" };
 }
+
+// ---------------------------------------------------------------------------
+// Social & email posts (the posting engine)
+// ---------------------------------------------------------------------------
+
+export type PostInput = {
+  id?: string;
+  body: string;
+  media_url: string;
+  channels: string[];
+  email_subject: string;
+  scheduled_at: string; // ISO timestamp
+};
+
+export async function savePost(input: PostInput) {
+  const supabase = await requireUser();
+  if (!input.body.trim()) return { ok: false, message: "Write a message first." };
+  if (input.channels.length === 0) return { ok: false, message: "Pick at least one place to send it." };
+  if (input.channels.includes("instagram") && !input.media_url) {
+    return { ok: false, message: "Instagram posts need a photo." };
+  }
+
+  const row = {
+    body: input.body.trim(),
+    media_url: input.media_url || null,
+    channels: input.channels,
+    email_subject: input.email_subject.trim() || null,
+    scheduled_at: input.scheduled_at,
+    status: "scheduled",
+  };
+
+  if (input.id) {
+    // Only posts that haven't gone out yet can be edited.
+    const { error } = await supabase
+      .from("posts")
+      .update(row)
+      .eq("id", input.id)
+      .in("status", ["scheduled", "failed", "canceled"]);
+    if (error) return { ok: false, message: error.message };
+  } else {
+    const { error } = await supabase.from("posts").insert(row);
+    if (error) return { ok: false, message: error.message };
+  }
+  revalidatePath("/admin/posts");
+  return { ok: true, message: "Saved" };
+}
+
+export async function cancelPost(id: string) {
+  const supabase = await requireUser();
+  const { error } = await supabase
+    .from("posts")
+    .update({ status: "canceled" })
+    .eq("id", id)
+    .eq("status", "scheduled");
+  if (error) return { ok: false, message: error.message };
+  revalidatePath("/admin/posts");
+  return { ok: true, message: "Canceled" };
+}
+
+export async function deletePost(id: string) {
+  const supabase = await requireUser();
+  const { error } = await supabase.from("posts").delete().eq("id", id);
+  if (error) return { ok: false, message: error.message };
+  revalidatePath("/admin/posts");
+  return { ok: true, message: "Deleted" };
+}
+
+/** Put a failed/canceled post back in the queue (only unsent channels re-send). */
+export async function requeuePost(id: string) {
+  const supabase = await requireUser();
+  const { error } = await supabase
+    .from("posts")
+    .update({ status: "scheduled", scheduled_at: new Date().toISOString() })
+    .eq("id", id)
+    .in("status", ["failed", "canceled"]);
+  if (error) return { ok: false, message: error.message };
+  revalidatePath("/admin/posts");
+  return { ok: true, message: "Back in the queue" };
+}
+
+/**
+ * Send everything that's due right now, instead of waiting for the
+ * 5-minute clock. Requires a signed-in admin; uses the service role
+ * because the dispatcher also reads the email list.
+ */
+export async function sendDueNow() {
+  await requireUser();
+  const { createServiceClient } = await import("@/lib/supabase/admin");
+  const { runDispatch } = await import("@/lib/dispatch");
+  const service = createServiceClient();
+  if (!service) {
+    return {
+      ok: false,
+      message: "Sending isn't fully set up yet (SUPABASE_SERVICE_ROLE_KEY is missing in Vercel).",
+    };
+  }
+  try {
+    const summary = await runDispatch(service);
+    revalidatePath("/admin/posts");
+    return {
+      ok: true,
+      message: summary.dispatched
+        ? `Sent ${summary.dispatched} post${summary.dispatched === 1 ? "" : "s"}.`
+        : "Nothing was due to send.",
+    };
+  } catch (e) {
+    return { ok: false, message: e instanceof Error ? e.message : "Sending failed." };
+  }
+}
