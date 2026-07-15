@@ -87,7 +87,8 @@ Meta Graph API · Resend
 - [x] Subscribers table — implemented as `contacts` (email, name, source, consent, created_at)
 - [x] Site content — implemented as `content_blocks` (~138 editable blocks: hours, events
       copy, pricing, etc.)
-- [x] Supabase Auth — staff logins (`/admin/login`, session middleware)
+- [~] Supabase Auth — staff logins (`/admin/login` + middleware built; **no users created
+      yet** — add Jeff + Chase in Supabase dashboard → Authentication → Users)
 - [x] Admin dashboard shell (plain-language, big buttons)
 - [x] Content editors: hours / events / pricing / images
 - [x] Email list view + one-click CSV export (the "CRM", `/admin/contacts`)
@@ -147,6 +148,50 @@ time; scheduled posts are editable/cancelable.
 - [ ] FAQ schema
 
 **Done when:** newsletter sends on a monthly cadence; sunset indicator live.
+
+---
+
+## Operational setup (dashboards, not code — blocks the phases above)
+
+- [ ] Create the two admin users in Supabase Auth (Jeff + Chase) — nothing admin works
+      until this exists
+- [ ] Vercel env vars: `NEXT_PUBLIC_*` trio + `SUPABASE_SERVICE_ROLE_KEY` + `CRON_SECRET`
+      (values in `SETUP.md`) — gates the CMS content on production and the post dispatcher
+- [ ] Merge the sidebar-admin / posting-engine branch to `main` after preview review
+- [ ] Point `christiesgolfranch.com` at the Vercel project (currently on .vercel.app)
+- [ ] Clover: generate the 4 lesson Payment Links, paste into Admin → Lessons
+- [ ] Resend: verify sending domain (SPF/DKIM), then set `RESEND_API_KEY` / `RESEND_FROM`
+- [ ] Meta: developer app + link IG Business account to the FB Page + long-lived Page
+      token + app review → set the three `META_*` env vars
+- [ ] Verify the Google Map embed renders on production
+
+---
+
+## Backlog — agreed or discussed, not yet scheduled
+
+- [ ] **Email-capture pop-up** on first visit — appears once per visitor (cookie),
+      shows after a short delay, consent checkbox, closes politely; feeds `contacts`
+      (companion to the Phase 3 checklist item)
+- [ ] QR code for the front desk → `/join` mobile signup page (Phase 3 item; the page
+      needs building, then print the code)
+- [ ] Automated post-visit review requests with the GBP "write a review" deep link,
+      deduped per contact (handoff Phase 3) — depends on Clover webhooks for visit data;
+      same public link for everyone, no gating, no incentives
+- [ ] Birthday "free bucket" email — `contacts.birthday` column already exists; monthly
+      automated send via the posting pipeline
+- [ ] Memberships + junior-camp checkout via Clover Hosted Checkout with webhooks
+      (handoff Phase 2; lessons-via-Payment-Links is the v1)
+- [ ] Newsletter automation (Phase 6) — monthly assembly of upcoming events + Jeff's tip,
+      reusing the posting engine's email channel
+- [ ] "Open now · closes around [sunset] today" live badge (Phase 6; a version existed on
+      the Astro branch — port it)
+- [ ] First-timer walkthrough section (Phase 6)
+- [ ] Twitter card meta tags (small Phase 2 leftover)
+- [ ] Marketing asset generator — templated, correctly-sized images per channel from one
+      headline + photo (handoff Phase 4)
+- [ ] Weather-triggered promo *flagging* (suggest, never auto-send — handoff Phase 4)
+- [ ] SMS via Twilio, opt-in only (TCPA) — optional, higher review conversion
+- [ ] GA4 + Meta pixel + conversion tracking (gates Phase 5 ads)
 
 ---
 
